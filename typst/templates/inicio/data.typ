@@ -1,4 +1,4 @@
-#let logo = image("logo/logotipo.png", width: 100%)
+#let logo = image("logo/logotipo.png", width: 20%)
 #let centro = "Centro educativo"
 #let programa = "Nombre de la FP"
 
