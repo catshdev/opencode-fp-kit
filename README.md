@@ -13,15 +13,18 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
 - `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `.typst/.aspell.es.pwl`.
 - `typst/examples.typ`: ejemplos de tablas de la plantilla (incluido `flex-caption`).
-- `typst/templates/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: `lib.typ`, `data.typ`, `logo/` y el diccionario), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
+- `typst/templates/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore`), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
 
 ## Cómo engancharlo en un proyecto
 
-En el `opencode.json` del proyecto (en la raíz o dentro de `.opencode/`), junto a `$schema`, añade la ruta al kit (la carpeta o el `plugin.ts`):
+Crea el `opencode.json` del proyecto (en la raíz o dentro de `.opencode/`) con la ruta al kit (la carpeta o el `plugin.ts`) en `plugin`, junto a `$schema`:
 
 ```json
 {
-  "plugin": ["{env:HOME}/opencode-fp-kit"]
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "{env:HOME}/path-to/opencode-fp-kit"
+  ]
 }
 ```
 
@@ -29,7 +32,7 @@ La ruta puede ser relativa (respecto al propio `opencode.json`), absoluta o `fil
 
 El plugin localiza el kit por su cuenta (por su propia ruta) y lo engancha todo: los comandos (sustituyendo `{{KIT}}` por la ruta absoluta del kit, así que no dependen de dónde esté el proyecto), las instrucciones (`AGENTS.md` del kit) y el LSP `tinymist` para los ficheros `.typ`. El proyecto no necesita declarar nada de eso; si quiere otro LSP, lo declara en su `opencode.json` y el suyo gana. Esa entrada `plugin` es la única ruta al kit que se escribe en el proyecto: lo demás sale de ella. Además, el plugin exporta `FP_KIT` con esa ruta a los shells, para que `AGENTS.md` y el script de revisión no repitan la ruta, y autoriza esa ruta como directorio externo, para no repetir el permiso en cada proyecto.
 
-Reinicia opencode para que tome los cambios y compruébalo con `opencode debug config`: deben aparecer los cuatro comandos, `AGENTS.md` del kit en `instructions` y `lsp.tinymist`.
+Reinicia opencode para que tome los cambios y compruébalo con `opencode debug config`: deben aparecer los cinco comandos, `AGENTS.md` del kit en `instructions` y `lsp.tinymist`.
 
 ## Notas
 

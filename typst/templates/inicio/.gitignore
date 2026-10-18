@@ -1,0 +1,3 @@
+*.pdf
+!**/ut*/tarea/*.pdf
+!**/ut*/tarea/partes/p*/*.pdf
