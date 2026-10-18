@@ -34,3 +34,4 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode debug c
 
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`README.md`, `documentacion/`, `1_descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/template/`).
+- El kit es el único directorio externo autorizado. Aun así, el agente avisa antes de escribir ahí por iniciativa propia (ver `AGENTS.md`).

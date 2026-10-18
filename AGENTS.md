@@ -141,6 +141,12 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
   - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista que toque en el mismo cambio: a la del kit solo si es de la sintaxis de Typst, y al del proyecto lo propio de estos módulos (lo habitual). Cuanto menos ruido, más se ve una falta real.
   - No se meten a propósito: las palabras españolas escritas sin la tilde (`version`, `maximo`…), para que si aparecen en prosa salten como falta real; y los nombres y el relleno de las entradas de plantilla del `references.bib` (Smith, Jones, Nakamura, `placeholder`…), que se quedan a la vista hasta que esas entradas se sustituyan.
 
+## Escritura en el kit
+
+El proyecto de entregas es lo único escribible de serie. Fuera de él, el plugin autoriza solo el kit (`$FP_KIT`) como directorio externo, y aun así no escribas ahí por tu cuenta sin avisar: si el cambio en el kit es idea tuya (mejorar el plugin, un comando, el script…), dilo antes y espera el visto bueno. Si el usuario te ha pedido un cambio en el kit, hazlo sin preguntar. Cualquier otra ruta externa (la carpeta padre, otros repos, `~/.config/opencode`, el binario de opencode…) se pide antes: el plugin no la autoriza y opencode preguntará.
+
+Para llegar al kit usa rutas absolutas o el `workdir`; no hagas `cd` a su carpeta padre, que es una ruta externa y dispara el aviso.
+
 ## Control de versiones
 
 No hagas commits ni prepares el índice (`git add`, `git commit`, `git stash`…): deja los cambios sin confirmar para que el usuario los revise. Solo se confirma cuando lo pida de forma explícita.
