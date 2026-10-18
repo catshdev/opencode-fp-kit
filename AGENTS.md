@@ -42,6 +42,24 @@ typst watch --root . modulo-1/ut01/tarea/typst/main.typ
 - Typst 0.15.1 viene en el perfil del sistema; no hay que instalar ni fijar nada más.
 - Los PDF generados (`main.pdf`) están en `.gitignore`: se compilan en local y no se commitean. Los únicos PDFs versionados son los enunciados: `ut*/tarea/*.pdf` y, en tareas por partes, `ut*/tarea/partes/p*/*.pdf`.
 
+### Comprobar el PDF sin abrirlo
+
+Un agente no ve el PDF, así que conviene revisar el resultado sin abrirlo:
+
+```bash
+typst compile --root . <ruta>/main.typ /dev/stdout -f html --features html 2>/dev/null   # texto y estructura
+typst compile --root . <ruta>/main.typ "page-{p}.png" -f png                              # páginas a PNG (maquetación)
+typst compile --root . <ruta>/main.typ && pdftotext <ruta>/main.pdf -                     # volcado rápido de texto
+```
+
+### Errores que salen a menudo
+
+- `file not found` o `unknown variable`: import mal puesto o que falta; las rutas de los `#import` van relativas al propio `.typ`.
+- `path ... would escape the project root`: falta `--root .` o la imagen queda fuera del root.
+- `expected X, found Y` o `unexpected argument`: firma de la función; los argumentos con nombre van con `:` (`func(nombre: valor)`).
+- Una regla `set`/`show` no hace nada: tiene que ir antes del contenido al que afecta.
+- `cetz`, `fletcher` o `meander` que falla en un equipo sin red: el paquete no está cacheado.
+
 ## Convenciones de redacción
 
 Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada de tono académico pomposo. La meta es que el texto se lea como lo escribiría una persona, no como lo generaría una IA.
