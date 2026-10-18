@@ -10,7 +10,7 @@ Está pensado para vivir como repo hermano del proyecto: `../opencode-fp-kit`.
 - `commands/*.md`: comandos de opencode: `/crear-modulo`, `/crear-unidad`, `/documentar` y `/revisar`.
 - `plugin.ts`: plugin de opencode que registra esos comandos en el proyecto.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
-- `typst/.aspell.es.pwl`: diccionario genérico (vocabulario común a cualquier proyecto). El proyecto puede añadir lo suyo en su propio `typst/.aspell.es.pwl`.
+- `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `typst/.aspell.es.pwl`.
 
 ## Cómo engancharlo en un proyecto
 
