@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Revisión ortográfica del entregable Typst.
 #
-#   bash ../opencode-fp-kit/typst/revisar.sh                      # todo el entregable
-#   bash ../opencode-fp-kit/typst/revisar.sh ruta/del/fichero.typ  # solo lo que se indique
+#   bash "$FP_KIT/typst/revisar.sh"                      # todo el entregable
+#   bash "$FP_KIT/typst/revisar.sh" ruta/del/fichero.typ  # solo lo que se indique
+#
+# FP_KIT es la ruta al kit y la exporta el plugin del kit en opencode; si lo
+# ejecutas fuera de opencode, usa la ruta del kit en su lugar.
 #
 # El diccionario es la unión de dos: el genérico que acompaña a este script en
 # el kit y el específico del proyecto en `typst/.aspell.es.pwl` (si existe).

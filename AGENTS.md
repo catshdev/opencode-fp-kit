@@ -128,15 +128,16 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 - Después de redactar o modificar texto, pásalo por el revisor ortográfico y dale además una lectura rápida: la herramienta no detecta frases forzadas de más.
 
   ```bash
-  bash ../opencode-fp-kit/typst/revisar.sh                                    # todo el entregable
-  bash ../opencode-fp-kit/typst/revisar.sh modulo-1/ut01/tarea/typst/chapters/01-ejemplo.typ   # solo un fichero
+  bash "$FP_KIT/typst/revisar.sh"                                    # todo el entregable
+  bash "$FP_KIT/typst/revisar.sh" modulo-1/ut01/tarea/typst/chapters/01-ejemplo.typ   # solo un fichero
   ```
 
+  - `FP_KIT` es la ruta absoluta al kit y la exporta el plugin del kit en los shells que abre opencode (agente y terminal integrada). Si ejecutas el script fuera de opencode, usa la ruta del kit en su lugar.
   - El comando `/revisar <modulo> [capítulo]` lanza esta revisión sobre un módulo entero o sobre un capítulo suelto.
   - Alcance: los proyectos Typst de las entregas (`ut*/tarea/typst/` y, en tareas por partes, `ut*/tarea/partes/p*/typst/`); nunca la carpeta raíz `typst/`.
   - Las revisiones se hacen contra dos fuentes: el enunciado (`1_descripcion.pdf` de `ut*/tarea/`, o el de la parte en `ut*/tarea/partes/p*/`) y la documentación de la unidad (`ut*/documentacion/*.txt`): la entrega tiene que estar en base a ambas, no solo al enunciado.
   - El script quita el marcado y el código Typst antes de revisar (comentarios, bloques de código, líneas de código como `let`/`for`/`if`, llamadas a funciones, argumentos con nombre y código en línea) y deja la prosa: párrafos, encabezados, celdas de tabla y pies. De los `.bib` solo conserva el valor de cada campo, no los nombres. Así que no hace falta meter en el diccionario ni palabras de sintaxis de Typst ni nombres de campo de las entradas `.bib`.
-  - El diccionario de palabras admitidas son dos listas que el script une: la del kit (`../opencode-fp-kit/typst/.aspell.es.pwl`, solo palabras de la sintaxis de Typst que el script no quita, iguales para cualquier proyecto) y la del proyecto (`typst/.aspell.es.pwl`, con el vocabulario propio de estos módulos; puede no existir). Formato de ambas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script las convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
+  - El diccionario de palabras admitidas son dos listas que el script une: la del kit (`$FP_KIT/typst/.aspell.es.pwl`, solo palabras de la sintaxis de Typst que el script no quita, iguales para cualquier proyecto) y la del proyecto (`typst/.aspell.es.pwl`, con el vocabulario propio de estos módulos; puede no existir). Formato de ambas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script las convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
   - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista que toque en el mismo cambio: a la del kit solo si es de la sintaxis de Typst, y al del proyecto lo propio de estos módulos (lo habitual). Cuanto menos ruido, más se ve una falta real.
   - No se meten a propósito: las palabras españolas escritas sin la tilde (`version`, `maximo`…), para que si aparecen en prosa salten como falta real; y los nombres y el relleno de las entradas de plantilla del `references.bib` (Smith, Jones, Nakamura, `placeholder`…), que se quedan a la vista hasta que esas entradas se sustituyan.
 

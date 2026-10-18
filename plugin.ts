@@ -1,5 +1,5 @@
 import type { Plugin } from "@opencode-ai/plugin"
-import { readdir, stat } from "node:fs/promises"
+import { readdir } from "node:fs/promises"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -12,25 +12,10 @@ const LSP = {
   },
 }
 
-async function existeDirectorio(ruta: string): Promise<boolean> {
-  try {
-    return (await stat(ruta)).isDirectory()
-  } catch {
-    return false
-  }
-}
-
-async function directorioDelKit(worktree: string): Promise<string> {
-  const candidatos: string[] = []
-  try {
-    candidatos.push(dirname(fileURLToPath(import.meta.url)))
-  } catch {}
-  candidatos.push(join(worktree, "..", "opencode-fp-kit"))
-
-  for (const candidato of candidatos) {
-    if (await existeDirectorio(join(candidato, "commands"))) return candidato
-  }
-  return candidatos[0]
+// El plugin vive en la raíz del kit, así que su propia ruta indica dónde está:
+// el proyecto no repite la del kit en ningún otro sitio.
+function directorioDelKit(): string {
+  return dirname(fileURLToPath(import.meta.url))
 }
 
 async function leerComandos(kit: string): Promise<Record<string, Comando>> {
@@ -60,8 +45,8 @@ async function leerComandos(kit: string): Promise<Record<string, Comando>> {
   return comandos
 }
 
-export const FpKit: Plugin = async ({ worktree }) => {
-  const kit = await directorioDelKit(worktree)
+export const FpKit: Plugin = async () => {
+  const kit = directorioDelKit()
   return {
     config: async (cfg) => {
       cfg.command = { ...(await leerComandos(kit)), ...(cfg.command ?? {}) }
@@ -70,6 +55,9 @@ export const FpKit: Plugin = async ({ worktree }) => {
       const agents = join(kit, "AGENTS.md")
       const instrucciones = cfg.instructions ?? []
       if (!instrucciones.includes(agents)) cfg.instructions = [...instrucciones, agents]
+    },
+    "shell.env": async (_input, output) => {
+      output.env.FP_KIT = kit
     },
   }
 }
