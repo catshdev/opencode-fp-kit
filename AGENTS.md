@@ -160,6 +160,10 @@ Para llegar al kit usa rutas absolutas o el `workdir`; no hagas `cd` a su carpet
 
 No hagas commits ni prepares el índice (`git add`, `git commit`, `git stash`…): deja los cambios sin confirmar para que el usuario los revise. Solo se confirma cuando lo pida de forma explícita.
 
+## Autoaprendizaje
+
+El kit está en mejora continua. Si el usuario pide algo que no esté definido en estas reglas ni en los comandos, hazlo y, en el mismo cambio, escribe la regla que lo cubra donde le toque: una sección de este AGENTS.md, un comando de `commands/`, el `README.md` del kit… Así lo que se decide una vez queda escrito y no se vuelve a preguntar. Como sale de una petición del usuario, el cambio en el kit está autorizado (ver «Escritura en el kit»).
+
 ## Mantenimiento de este archivo
 
 Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `.typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `commands/` o el `plugin.ts`/`index.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
