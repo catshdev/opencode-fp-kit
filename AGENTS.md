@@ -19,15 +19,6 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 - Registrar cada capítulo nuevo en el `#include` de su `main.typ`.
 - Los apéndices no van como un capítulo: se definen en el `data.typ` del proyecto (`#let apendices = [ #include "chapters/a-appendix.typ" ]`, o `none` si no hay) y `main.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes).
 
-## Crear un módulo
-
-Cuando se pida crear un módulo o una unidad de trabajo, seguir el flujo del `README.md` o los comandos `/crear-modulo` y `/crear-unidad`. Antes de crear nada, pedir al usuario el nombre y los datos mínimos que falten, sin inventarlos:
-
-- Asignatura, en `modulo-1/.typst/data.typ`: `nombre` y `profesor` o `profesora`.
-- Tarea, en `modulo-1/ut01/tarea/typst/data.typ`: `titulo`, `subtitulo`, `dia`, `mes` y `anyo`.
-
-Se vuelcan en `thesis.with` desde esos `data.typ`; el resto de parámetros (`logo`, `centro`, `programa`, `autor`, `autora`, `ubicacion`) sale del `.typst/data.typ` de la raíz. Al crear un módulo, añadirlo a la lista de «Módulos» del `README.md`; si se borra a mano, quitarlo de la lista.
-
 ## Compilar Typst
 
 Siempre desde la raíz del repo y con `--root .` (obligatorio):
