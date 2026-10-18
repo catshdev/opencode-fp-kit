@@ -55,6 +55,22 @@ export const FpKit: Plugin = async () => {
       const agents = join(kit, "AGENTS.md")
       const instrucciones = cfg.instructions ?? []
       if (!instrucciones.includes(agents)) cfg.instructions = [...instrucciones, agents]
+
+      // El kit vive fuera del proyecto, así que se autoriza su ruta para poder
+      // leerlo y editarlo (mejorar el plugin, los comandos, el script…) sin
+      // repetir el permiso en cada opencode.json.
+      const permiso = cfg.permission
+      if (permiso === undefined || typeof permiso === "object") {
+        const base = (permiso ?? {}) as Record<string, unknown>
+        if (base.external_directory !== "allow") {
+          const actual = base.external_directory
+          const reglas = actual && typeof actual === "object" ? { ...(actual as Record<string, string>) } : {}
+          cfg.permission = {
+            ...base,
+            external_directory: { ...reglas, [kit]: "allow", [`${kit}/**`]: "allow" },
+          } as typeof cfg.permission
+        }
+      }
     },
     "shell.env": async (_input, output) => {
       output.env.FP_KIT = kit
