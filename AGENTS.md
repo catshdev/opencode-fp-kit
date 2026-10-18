@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Repositorio de entregas de un ciclo formativo. Nos comunicamos y escribimos siempre en español de España.
+Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de un ciclo formativo. Nos comunicamos y escribimos siempre en español de España.
 
 ## Estructura
 
@@ -15,7 +15,7 @@ Repositorio de entregas de un ciclo formativo. Nos comunicamos y escribimos siem
 - `_plantilla/` es el esqueleto para módulos y unidades nuevas (los pasos, en el `README.md`): `_plantilla/ut00/` con `documentacion/` y `tarea/` (y el proyecto en `tarea/typst/`), más `_plantilla/typst/data.typ`. No compila en su sitio actual.
 - `typst/lib.typ` es la plantilla compartida (función `thesis`): es local, no la re-inicialices con `typst init`. Cualquier cambio ahí afecta a todas las tareas. Los capítulos que usen `flex-caption` lo importan de `typst/lib.typ` con los `../` que correspondan, no de `@preview/classic-uni-thesis` (que solo queda como referencia anticuada en `_plantilla/`).
 - `typst/data.typ` son los datos raíz compartidos (logo, centro, programa, autor…); `typst/base/` y `typst/subject/` quedan para datos de asignatura.
-- `typst/revisar.sh` es el script de revisión ortográfica (ver "Convenciones de redacción") y `typst/.aspell.es.pwl` su diccionario de palabras admitidas. Los dos viven en `typst/`, así que quedan fuera de la revisión.
+- El script de revisión ortográfica y su diccionario genérico viven en el kit (`typst/revisar.sh` y `typst/.aspell.es.pwl`, junto a este AGENTS.md), fuera del repo de entregas; en `typst/` del proyecto solo queda, si hace falta, el diccionario específico de estos módulos.
 - Registrar cada capítulo nuevo en el `#include` de su `main.typ`.
 - Los apéndices no van como un capítulo: se definen en el `data.typ` del proyecto (`#let apendices = [ #include "chapters/a-appendix.typ" ]`, o `none` si no hay) y `main.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes).
 
@@ -128,18 +128,18 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 - Después de redactar o modificar texto, pásalo por el revisor ortográfico y dale además una lectura rápida: la herramienta no detecta frases forzadas de más.
 
   ```bash
-  bash typst/revisar.sh                                    # todo el entregable
-  bash typst/revisar.sh modulo-1/ut01/tarea/typst/chapters/01-ejemplo.typ   # solo un fichero
+  bash ../opencode-fp-kit/typst/revisar.sh                                    # todo el entregable
+  bash ../opencode-fp-kit/typst/revisar.sh modulo-1/ut01/tarea/typst/chapters/01-ejemplo.typ   # solo un fichero
   ```
 
   - El comando `/revisar <modulo> [capítulo]` lanza esta revisión sobre un módulo entero o sobre un capítulo suelto.
   - Alcance: los proyectos Typst de las entregas (`ut*/tarea/typst/` y, en tareas por partes, `ut*/tarea/partes/p*/typst/`); nunca la carpeta raíz `typst/`.
   - Las revisiones se hacen contra dos fuentes: el enunciado (`1_descripcion.pdf` de `ut*/tarea/`, o el de la parte en `ut*/tarea/partes/p*/`) y la documentación de la unidad (`ut*/documentacion/*.txt`): la entrega tiene que estar en base a ambas, no solo al enunciado.
   - El script quita el marcado y el código Typst antes de revisar (comentarios, bloques de código, líneas de código como `let`/`for`/`if`, llamadas a funciones, argumentos con nombre y código en línea) y deja la prosa: párrafos, encabezados, celdas de tabla y pies. De los `.bib` solo conserva el valor de cada campo, no los nombres. Así que no hace falta meter en el diccionario ni palabras de sintaxis de Typst ni nombres de campo de las entradas `.bib`.
-  - `typst/.aspell.es.pwl` es la lista de palabras admitidas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script la convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
-  - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista en el mismo cambio: cuanto menos ruido, más se ve una falta real.
+  - El diccionario de palabras admitidas son dos listas que el script une: la genérica del kit (`../opencode-fp-kit/typst/.aspell.es.pwl`, para vocabulario común a cualquier proyecto) y la específica del proyecto (`typst/.aspell.es.pwl`, opcional, con lo propio de estos módulos). Formato de ambas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script las convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
+  - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista que toque en el mismo cambio: a la genérica del kit si sirve para cualquier proyecto, o a la del proyecto si es propia de estos módulos. Cuanto menos ruido, más se ve una falta real.
   - No se meten a propósito: las palabras españolas escritas sin la tilde (`version`, `maximo`…), para que si aparecen en prosa salten como falta real; y los nombres y el relleno de las entradas de plantilla del `references.bib` (Smith, Jones, Nakamura, `placeholder`…), que se quedan a la vista hasta que esas entradas se sustituyan.
 
 ## Mantenimiento de este archivo
 
-Si un cambio en el repo afecta a lo aquí descrito (plantilla `typst/lib.typ`, herramientas auxiliares de `typst/` como el script de revisión, estructura de las unidades `ut*/`, comandos de compilación, comandos de `.opencode/command/` o convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
+Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `commands/` o el `plugin.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
