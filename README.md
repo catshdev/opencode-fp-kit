@@ -12,6 +12,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `index.ts`: reexporta `plugin.ts` para que la entrada `plugin` pueda apuntar a la carpeta del kit, no solo al fichero.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
 - `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `typst/.aspell.es.pwl`.
+- `typst/template/`: esqueleto de módulo y de unidad de trabajo (con el proyecto Typst y los `data.typ` de ejemplo) que copian los comandos `/crear-modulo` y `/crear-unidad`.
 
 ## Cómo engancharlo en un proyecto
 
@@ -32,4 +33,4 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode debug c
 ## Notas
 
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
-- Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`README.md`, `_plantilla`, `documentacion/`, `1_descripcion.pdf`) son relativas al proyecto.
+- Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`README.md`, `documentacion/`, `1_descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/template/`).

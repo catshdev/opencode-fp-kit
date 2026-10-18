@@ -40,7 +40,7 @@ if [ "$#" -gt 0 ]; then
     fi
   done
 else
-  mapfile -t ficheros < <(git ls-files | grep -E 'ut[0-9]+/tarea/.*\.(typ|bib)$' | grep -v '_plantilla')
+  mapfile -t ficheros < <(git ls-files | grep -E 'ut[0-9]+/tarea/.*\.(typ|bib)$')
   if [ "${#ficheros[@]}" -eq 0 ]; then
     echo "No hay ficheros de entregable que revisar." >&2
     exit 1
