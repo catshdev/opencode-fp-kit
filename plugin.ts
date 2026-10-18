@@ -5,6 +5,13 @@ import { fileURLToPath } from "node:url"
 
 type Comando = { description?: string; template: string }
 
+const LSP = {
+  tinymist: {
+    command: ["tinymist", "lsp"],
+    extensions: [".typ", ".typc"],
+  },
+}
+
 async function existeDirectorio(ruta: string): Promise<boolean> {
   try {
     return (await stat(ruta)).isDirectory()
@@ -58,6 +65,11 @@ export const FpKit: Plugin = async ({ worktree }) => {
   return {
     config: async (cfg) => {
       cfg.command = { ...(await leerComandos(kit)), ...(cfg.command ?? {}) }
+      cfg.lsp = { ...LSP, ...(cfg.lsp ?? {}) }
+
+      const agents = join(kit, "AGENTS.md")
+      const instrucciones = cfg.instructions ?? []
+      if (!instrucciones.includes(agents)) cfg.instructions = [...instrucciones, agents]
     },
   }
 }

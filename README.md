@@ -8,7 +8,7 @@ Está pensado para vivir como repo hermano del proyecto: `../opencode-fp-kit`.
 
 - `AGENTS.md`: convenios de redacción y estructura. Se cargan como instrucciones del proyecto.
 - `commands/*.md`: comandos de opencode: `/crear-modulo`, `/crear-unidad`, `/documentar` y `/revisar`.
-- `plugin.ts`: plugin de opencode que registra esos comandos en el proyecto.
+- `plugin.ts`: plugin de opencode que registra esos comandos y el LSP de Typst (`tinymist`) en el proyecto.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
 - `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `typst/.aspell.es.pwl`.
 
@@ -18,14 +18,13 @@ En el `opencode.json` del proyecto, junto a `$schema`, añade:
 
 ```json
 {
-  "instructions": ["../opencode-fp-kit/AGENTS.md"],
   "plugin": ["../opencode-fp-kit/plugin.ts"]
 }
 ```
 
-El plugin localiza el kit por su cuenta y registra los comandos sustituyendo `{{KIT}}` por la ruta absoluta del kit, así que las rutas de los comandos no dependen de dónde esté el proyecto.
+El plugin localiza el kit por su cuenta y lo engancha todo: los comandos (sustituyendo `{{KIT}}` por la ruta absoluta del kit, así que no dependen de dónde esté el proyecto), las instrucciones (`AGENTS.md` del kit) y el LSP `tinymist` para los ficheros `.typ`. El proyecto no necesita declarar nada de eso; si quiere otro LSP, lo declara en su `opencode.json` y el suyo gana.
 
-Reinicia opencode para que tome los cambios y compruébalo con `opencode debug config`: deben aparecer los cuatro comandos y `AGENTS.md` en `instructions`.
+Reinicia opencode para que tome los cambios y compruébalo con `opencode debug config`: deben aparecer los cuatro comandos, `AGENTS.md` del kit en `instructions` y `lsp.tinymist`.
 
 ## Notas
 
