@@ -1,7 +1,7 @@
-#import "../../../../typst/lib.typ": abbrev-table, flex-caption, thesis
+#import "../../../../.typst/lib.typ": abbrev-table, flex-caption, thesis
 
-#import "../../../../typst/data.typ" as base
-#import "../../../typst/data.typ" as asignatura
+#import "../../../../.typst/data.typ" as base
+#import "../../../.typst/data.typ" as asignatura
 #import "data.typ" as tarea
 
 #show: thesis.with(

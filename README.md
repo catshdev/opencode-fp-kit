@@ -11,7 +11,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `plugin.ts`: plugin de opencode que registra esos comandos, las instrucciones y el LSP de Typst (`tinymist`) en el proyecto, exporta la variable `FP_KIT` (ruta absoluta del kit) a los shells y autoriza la ruta del kit como directorio externo (permiso `external_directory`), para poder leerlo y editarlo desde cualquier proyecto.
 - `index.ts`: reexporta `plugin.ts` para que la entrada `plugin` pueda apuntar a la carpeta del kit, no solo al fichero.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
-- `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `typst/.aspell.es.pwl`.
+- `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `.typst/.aspell.es.pwl`.
 - `typst/template/`: esqueleto de módulo y de unidad de trabajo (con el proyecto Typst y los `data.typ` de ejemplo) que copian los comandos `/crear-modulo` y `/crear-unidad`.
 
 ## Cómo engancharlo en un proyecto

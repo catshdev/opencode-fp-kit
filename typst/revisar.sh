@@ -8,7 +8,7 @@
 # ejecutas fuera de opencode, usa la ruta del kit en su lugar.
 #
 # El diccionario es la unión de dos: el genérico que acompaña a este script en
-# el kit y el específico del proyecto en `typst/.aspell.es.pwl` (si existe).
+# el kit y el específico del proyecto en `.typst/.aspell.es.pwl` (si existe).
 #
 # Antes de llegar a aspell se quita el marcado de Typst: se van comentarios,
 # bloques de código, líneas de marcado y código en línea; se queda la prosa
@@ -25,7 +25,7 @@ repo="$(git rev-parse --show-toplevel)"
 cd "$repo"
 
 generico="$directorio/.aspell.es.pwl"
-especifico="$repo/typst/.aspell.es.pwl"
+especifico="$repo/.typst/.aspell.es.pwl"
 
 if [ "$#" -gt 0 ]; then
   ficheros=()
