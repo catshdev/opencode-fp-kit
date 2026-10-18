@@ -16,7 +16,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 
 ## Cómo engancharlo en un proyecto
 
-En el `opencode.json` del proyecto, junto a `$schema`, añade la ruta al kit (la carpeta o el `plugin.ts`):
+En el `opencode.json` del proyecto (en la raíz o dentro de `.opencode/`), junto a `$schema`, añade la ruta al kit (la carpeta o el `plugin.ts`):
 
 ```json
 {
