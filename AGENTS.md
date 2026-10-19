@@ -6,6 +6,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 - Un directorio por módulo (cada carpeta de primer nivel del repo). Los pasos para crear un módulo o una unidad de trabajo, en los comandos `/crear-modulo` y `/crear-unidad`.
 - Nunca uses los nombres reales de esos módulos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `modulo-1`, `modulo-2`, …
+- Los convenios propios de un proyecto de entregas (los módulos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
 - Cada módulo tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
   - `ut01/documentacion/`: documentación de la unidad en `.txt`, sacada de los PDF con `pdftotext`. Las tareas se hacen en base a ella. Puede estar vacía.
   - `ut01/tarea/`: los enunciados en PDF (`0-info.pdf`, `1-descripcion.pdf` (o `descripcion.pdf`), `2-informacion.pdf`, `3-evaluacion.pdf`, …).
@@ -162,7 +163,12 @@ No hagas commits ni prepares el índice (`git add`, `git commit`, `git stash`…
 
 ## Autoaprendizaje
 
-El kit está en mejora continua. Si el usuario pide algo que no esté definido en estas reglas ni en los comandos, hazlo y, en el mismo cambio, escribe la regla que lo cubra donde le toque: una sección de este AGENTS.md, un comando de `commands/`, el `README.md` del kit… Así lo que se decide una vez queda escrito y no se vuelve a preguntar. Como sale de una petición del usuario, el cambio en el kit está autorizado (ver «Escritura en el kit»).
+El kit y los proyectos están en mejora continua: cuando una petición deje un convenio nuevo, escríbelo en el mismo cambio, en el sitio que le toque, y no lo vuelvas a preguntar después. Dónde va según su alcance:
+
+- Genérico (vale para cualquier ciclo): al kit (una sección de este AGENTS.md, un comando de `commands/`, el `README.md`…). Antes de tocar el kit, avisa y espera el visto bueno.
+- Propio del proyecto de entregas (módulos, centro, material de apoyo…): al `AGENTS.md` de ese proyecto, que se actualiza directamente.
+
+Lo que el usuario pida expresamente para el kit se hace sin preguntar (ver «Escritura en el kit»); la regla de arriba es para los convenios que deduzcas tú.
 
 ## Mantenimiento de este archivo
 
