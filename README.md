@@ -13,7 +13,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
 - `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `.typst/.aspell.es.pwl`.
 - `typst/examples.typ`: ejemplos de tablas de la plantilla (incluido `flex-caption`).
-- `typst/templates/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore`), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
+- `typst/templates/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore` y el `AGENTS.md`), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
 
 ## Cómo engancharlo en un proyecto
 

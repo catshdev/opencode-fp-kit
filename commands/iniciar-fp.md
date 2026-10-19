@@ -2,7 +2,7 @@
 description: Inicia las entregas de un proyecto copiando la plantilla 'inicio' del kit y rellenando sus datos.
 ---
 
-Prepara el proyecto con la plantilla `inicio` del kit: los ficheros del proyecto Typst van a `.typst/` y el `.gitignore` a la raíz.
+Prepara el proyecto con la plantilla `inicio` del kit: los ficheros del proyecto Typst van a `.typst/`, y el `.gitignore` y el `AGENTS.md` a la raíz.
 
 Antes de copiar nada, pide al usuario los datos mínimos que falten y espera su respuesta; no los inventes. Son los de `.typst/data.typ`:
 
@@ -12,6 +12,8 @@ Antes de copiar nada, pide al usuario los datos mínimos que falten y espera su 
 - `autor` o `autora`: el nombre de quien entrega; el que no se use queda en `none`.
 - `ubicacion`: la ubicación del centro.
 
+Y los módulos para el `AGENTS.md` de la raíz: el código de cada uno y su asignatura.
+
 Después ejecuta:
 
 ```bash
@@ -19,6 +21,7 @@ src={{KIT}}/typst/templates/inicio
 mkdir -p .typst
 cp -R "$src"/. .typst/
 mv .typst/.gitignore ./.gitignore
+mv .typst/AGENTS.md ./AGENTS.md
 ```
 
-Y rellena `.typst/data.typ` con esos datos: `logo` como `image("logo/<fichero>", width: <ancho>%)`, y `centro`, `programa`, `autor` o `autora` y `ubicacion` como cadenas. Queda además `.typst/lib.typ` (la plantilla `thesis`) y el diccionario `.typst/.aspell.es.pwl`. Si `.typst` o el `.gitignore` ya existen, avisa antes de sobrescribir y espera confirmación.
+Y rellena `.typst/data.typ` con esos datos: `logo` como `image("logo/<fichero>", width: <ancho>%)`, y `centro`, `programa`, `autor` o `autora` y `ubicacion` como cadenas. En el `AGENTS.md`, sustituye el ciclo y la lista de módulos por los del proyecto. Queda además `.typst/lib.typ` (la plantilla `thesis`) y el diccionario `.typst/.aspell.es.pwl`. Si `.typst`, el `.gitignore` o el `AGENTS.md` ya existen, avisa antes de sobrescribir y espera confirmación.
