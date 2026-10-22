@@ -1,16 +1,9 @@
-import type { Plugin } from "@opencode-ai/plugin"
-import { readdir } from "node:fs/promises"
+import { Plugin } from "@opencode/plugin"
+import { readFile, readdir } from "node:fs/promises"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 
 type Comando = { description?: string; template: string }
-
-const LSP = {
-  tinymist: {
-    command: ["tinymist", "lsp"],
-    extensions: [".typ", ".typc"],
-  },
-}
 
 // El plugin vive en la raíz del kit, así que su propia ruta indica dónde está:
 // el proyecto no repite la del kit en ningún otro sitio.
@@ -31,7 +24,7 @@ async function leerComandos(kit: string): Promise<Record<string, Comando>> {
 
   for (const fichero of ficheros) {
     if (!fichero.endsWith(".md")) continue
-    const crudo = await Bun.file(join(directorio, fichero)).text()
+    const crudo = await readFile(join(directorio, fichero), "utf8")
     const partes = crudo.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
     const cabecera = partes?.[1] ?? ""
     const cuerpo = partes?.[2] ?? crudo
@@ -45,35 +38,37 @@ async function leerComandos(kit: string): Promise<Record<string, Comando>> {
   return comandos
 }
 
-export const FpKit: Plugin = async () => {
-  const kit = directorioDelKit()
-  return {
-    config: async (cfg) => {
-      cfg.command = { ...(await leerComandos(kit)), ...(cfg.command ?? {}) }
-      cfg.lsp = { ...LSP, ...(cfg.lsp ?? {}) }
+const kit = directorioDelKit()
 
-      const agents = join(kit, "AGENTS.md")
-      const instrucciones = cfg.instructions ?? []
-      if (!instrucciones.includes(agents)) cfg.instructions = [...instrucciones, agents]
+export default Plugin.define({
+  id: "fp-kit",
+  async setup(ctx) {
+    const comandos = await leerComandos(kit)
 
-      // El kit vive fuera del proyecto, así que se autoriza su ruta para poder
-      // leerlo y editarlo (mejorar el plugin, los comandos, el script…) sin
-      // repetir el permiso en cada opencode.json.
-      const permiso = cfg.permission
-      if (permiso === undefined || typeof permiso === "object") {
-        const base = (permiso ?? {}) as Record<string, unknown>
-        if (base.external_directory !== "allow") {
-          const actual = base.external_directory
-          const reglas = actual && typeof actual === "object" ? { ...(actual as Record<string, string>) } : {}
-          cfg.permission = {
-            ...base,
-            external_directory: { ...reglas, [kit]: "allow", [`${kit}/**`]: "allow" },
-          } as typeof cfg.permission
-        }
+    // Los comandos se registran como transformaciones y cada uno lleva su propio
+    // `execute`: la plantilla del kit se envía al hilo como prompt.
+    await ctx.command.transform((editor) => {
+      for (const [name, comando] of Object.entries(comandos)) {
+        editor.add({
+          name,
+          description: comando.description,
+          async execute({ sessionID, prompt, delivery }) {
+            const texto = comando.template.includes("$ARGUMENTS")
+              ? comando.template.replaceAll("$ARGUMENTS", prompt.text)
+              : prompt.text
+                ? `${comando.template}\n\n${prompt.text}`
+                : comando.template
+
+            await ctx.session.prompt({ sessionID, text: texto, delivery })
+          },
+        })
       }
-    },
-    "shell.env": async (_input, output) => {
-      output.env.FP_KIT = kit
-    },
-  }
-}
+    })
+
+    // Exporta la ruta del kit a los shells que abre opencode (agente y terminal
+    // integrada).
+    await ctx.shell.hook("create.before", (event) => {
+      event.env.FP_KIT = kit
+    })
+  },
+})

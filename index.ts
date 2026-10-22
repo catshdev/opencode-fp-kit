@@ -1,1 +1,1 @@
-export { FpKit } from "./plugin.ts"
+export { default } from "./plugin.ts"
