@@ -46,11 +46,11 @@ Uso de permisos más permisivos para desarrollar a la vez sobre el kit:
 }
 ```
 
-La ruta puede ser relativa (respecto al propio `opencode.json`), absoluta o `file://`; también se admite `~/` para el home. En el ejemplo se usa `{env:HOME}`, que funciona igual en `plugins` y en `instructions`.
+La ruta del plugin puede ser relativa (respecto al propio `opencode.json`), absoluta o `file://`. Para el home usa `{env:HOME}` (como en el ejemplo), que funciona igual en `plugins` y en `instructions`; la `~` no está documentada para la ruta del plugin (sí para los recursos de `permissions`).
 
 El plugin localiza el kit por su cuenta (por su propia ruta) y registra los comandos (sustituyendo `{{KIT}}` por la ruta absoluta del kit, así que no dependen de dónde esté el proyecto). El proyecto solo tiene que declarar el plugin, las instrucciones y el permiso del kit. Además, el plugin exporta `FP_KIT` con esa ruta a los shells, para que `AGENTS.md` y el script de revisión no repitan la ruta.
 
-Las instrucciones van en `instructions`, y el permiso del kit en `permissions`: la primera regla pide permiso para cualquier directorio externo y la segunda autoriza el kit. Si no quieres que te pregunte por el resto de rutas externas, quita la primera regla.
+Las instrucciones van en `instructions` y el permiso del kit en `permissions`. En el primer ejemplo no se deja entrar en ningún directorio externo y el kit queda en `ask`: la primera vez pregunta y, si autorizas, lo guarda. La variante de abajo es la cómoda para desarrollar sobre el kit: pregunta por cualquier directorio externo y autoriza el kit directamente.
 
 Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin list` (debe aparecer la ruta del kit) y con el log (`~/.local/share/opencode/log/opencode.log`), donde no debe salir `failed to load plugin`.
 

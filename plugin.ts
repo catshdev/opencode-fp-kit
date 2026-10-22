@@ -59,7 +59,7 @@ export default Plugin.define({
                 ? `${comando.template}\n\n${prompt.text}`
                 : comando.template
 
-            await ctx.session.prompt({ sessionID, text: texto, delivery })
+            await ctx.session.prompt({ ...prompt, sessionID, text: texto, delivery })
           },
         })
       }
