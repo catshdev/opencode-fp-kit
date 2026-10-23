@@ -4,13 +4,13 @@ description: Pasa a texto los PDF de la documentación de una unidad (pdftotext)
 
 Convierte a `.txt` los PDF de `documentacion/` de una unidad de trabajo.
 
-Argumentos: `<modulo>`, `<ut>` y, si se indica, borrar los PDF. Recibido: $ARGUMENTS
-Si faltan el módulo o la unidad, pídelos; pregunta también si hay que borrar los PDF después.
+Argumentos: `<curso>`, `<ut>` y, si se indica, borrar los PDF. Recibido: $ARGUMENTS
+Si faltan el curso o la unidad, pídelos; pregunta también si hay que borrar los PDF después.
 
-Carpeta: `<modulo>/<ut>/documentacion`. Ejecuta exactamente esto:
+Carpeta: `<curso>/<ut>/documentacion`. Ejecuta exactamente esto:
 
 ```bash
-dir="<modulo>/<ut>/documentacion"
+dir="<curso>/<ut>/documentacion"
 for pdf in "$dir"/*.pdf; do
   [ -e "$pdf" ] || continue
   base="$(basename "${pdf%.*}")"

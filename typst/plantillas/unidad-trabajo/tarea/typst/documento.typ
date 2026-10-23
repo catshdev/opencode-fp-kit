@@ -1,7 +1,7 @@
 #import "../../../../.typst/lib.typ": abbrev-table, flex-caption, thesis
 
 #import "../../../../.typst/base.typ" as base
-#import "../../../.typst/asignatura.typ" as asignatura
+#import "../../../.typst/curso.typ" as curso
 #import "tarea.typ" as tarea
 
 #show: thesis.with(
@@ -12,10 +12,10 @@
   autor: base.autor,
   autora: base.autora,
   ubicacion: base.ubicacion,
-  // Asignatura
-  tipo-tesis: asignatura.nombre,
-  profesor: asignatura.profesor,
-  profesora: asignatura.profesora,
+  // Curso
+  tipo-tesis: curso.nombre,
+  profesor: curso.profesor,
+  profesora: curso.profesora,
   // Tarea
   titulo: tarea.titulo,
   subtitulo: tarea.subtitulo,

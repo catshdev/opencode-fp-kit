@@ -4,19 +4,19 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 ## Estructura
 
-- Un directorio por módulo (cada carpeta de primer nivel del repo). Los pasos para crear un módulo o una unidad de trabajo, en los comandos `/crear-modulo` y `/crear-unidad`.
-- Nunca uses los nombres reales de esos módulos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `modulo-1`, `modulo-2`, …
-- Los convenios propios de un proyecto de entregas (los módulos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
-- Cada módulo tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
+- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso o una unidad de trabajo, en los comandos `/crear-curso` y `/crear-unidad`.
+- Nunca uses los nombres reales de esos cursos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, …
+- Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
+- Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
   - `ut01/documentacion/`: documentación de la unidad en `.txt`, sacada de los PDF con `pdftotext`. Las tareas se hacen en base a ella. Puede estar vacía.
   - `ut01/tarea/`: los enunciados en PDF (`0-info.pdf`, `1-descripcion.pdf` (o `descripcion.pdf`), `2-informacion.pdf`, `3-evaluacion.pdf`, …).
   - `ut01/tarea/typst/`: la entrega escrita (`documento.typ`, `tarea.typ`, `capitulos/NN-nombre.typ`, `referencias.bib`, `figuras/`). El contenido de los capítulos se saca de `1-descripcion.pdf` (o `descripcion.pdf` si va sin número).
-- Una tarea de una unidad puede estar dividida en partes: la documentación de la unidad va en `ut01/documentacion/`, los datos de la tarea en `ut01/tarea/typst/tarea.typ` y cada parte en `ut01/tarea/partes/p01`, `p02`, …, con su propio `1-descripcion.pdf` (o `descripcion.pdf`) y su proyecto `typst/` completo. Los `documento.typ` de las partes importan los datos en cadena: `../../../../../../.typst/lib.typ` y `../../../../../../.typst/base.typ` (raíz, 6 niveles), `../../../../../.typst/asignatura.typ` (asignatura, 5), `../../../.typst/tarea.typ` (tarea, 4) y `parte.typ` (la propia parte).
-- En las tareas de documento único los imports son más cortos: `../../../../.typst/lib.typ` (plantilla) y `../../../../.typst/base.typ` (raíz) con 4 niveles, `../../../.typst/asignatura.typ` (asignatura) con 3 y `tarea.typ` en la carpeta del proyecto.
-- Las plantillas viven en el kit, en `typst/plantillas/`: `inicio/` es el arranque del proyecto (los ficheros de `.typst/`, más el `.gitignore` y el `AGENTS.md` del proyecto) y lo copia `/iniciar-fp`; `modulo/` trae `.typst/asignatura.typ` con los datos de la asignatura; y `unidad-trabajo/` trae una unidad (`documentacion/` y `tarea/`, con el proyecto Typst en `tarea/typst/`). Las copian `/crear-modulo` (que crea el módulo y, a continuación, su primera unidad `ut01`) y `/crear-unidad`. No compilan en su sitio actual (dentro del kit).
+- Una tarea de una unidad puede estar dividida en partes: la documentación de la unidad va en `ut01/documentacion/`, los datos de la tarea en `ut01/tarea/typst/tarea.typ` y cada parte en `ut01/tarea/partes/p01`, `p02`, …, con su propio `1-descripcion.pdf` (o `descripcion.pdf`) y su proyecto `typst/` completo. Los `documento.typ` de las partes importan los datos en cadena: `../../../../../../.typst/lib.typ` y `../../../../../../.typst/base.typ` (raíz, 6 niveles), `../../../../../.typst/curso.typ` (curso, 5), `../../../.typst/tarea.typ` (tarea, 4) y `parte.typ` (la propia parte).
+- En las tareas de documento único los imports son más cortos: `../../../../.typst/lib.typ` (plantilla) y `../../../../.typst/base.typ` (raíz) con 4 niveles, `../../../.typst/curso.typ` (curso) con 3 y `tarea.typ` en la carpeta del proyecto.
+- Las plantillas viven en el kit, en `typst/plantillas/`: `inicio/` es el arranque del proyecto (los ficheros de `.typst/`, más el `.gitignore` y el `AGENTS.md` del proyecto) y lo copia `/iniciar-fp`; `curso/` trae `.typst/curso.typ` con los datos del curso; y `unidad-trabajo/` trae una unidad (`documentacion/` y `tarea/`, con el proyecto Typst en `tarea/typst/`). Las copian `/crear-curso` (que crea el curso y, a continuación, su primera unidad `ut01`) y `/crear-unidad`. No compilan en su sitio actual (dentro del kit).
 - `.typst/lib.typ` es la plantilla compartida (función `thesis`): es local, no la re-inicialices con `typst init`. Cualquier cambio ahí afecta a todas las tareas. Los capítulos que usen `flex-caption` lo importan de `.typst/lib.typ` con los `../` que correspondan, no de `@preview/classic-uni-thesis` (que solo queda como referencia anticuada en la plantilla del kit, `typst/plantillas/unidad-trabajo/`).
-- `.typst/base.typ` son los datos raíz compartidos (logo, centro, curso, autor…); cada módulo guarda los datos de la asignatura en `.typst/asignatura.typ`.
-- El script de revisión ortográfica vive en el kit (`typst/revisar.sh`, junto a este AGENTS.md), con un diccionario que solo lleva palabras de la sintaxis de Typst; los dos están fuera del repo de entregas. En `.typst/` del proyecto queda el diccionario con el vocabulario propio de estos módulos.
+- `.typst/base.typ` son los datos raíz compartidos (logo, centro, curso, autor…); cada curso guarda sus datos en `.typst/curso.typ`.
+- El script de revisión ortográfica vive en el kit (`typst/revisar.sh`, junto a este AGENTS.md), con un diccionario que solo lleva palabras de la sintaxis de Typst; los dos están fuera del repo de entregas. En `.typst/` del proyecto queda el diccionario con el vocabulario propio de estos cursos.
 - Registrar cada capítulo nuevo en el `#include` de su `documento.typ`.
 - Los apéndices no van como un capítulo: se definen en el fichero `tarea.typ` del proyecto (`#let apendices = [ #include "capitulos/a-appendix.typ" ]`, o `none` si no hay) y `documento.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes).
 
@@ -29,9 +29,9 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 Siempre desde la raíz del repo y con `--root .` (obligatorio):
 
 ```bash
-typst compile --root . modulo-1/ut01/tarea/typst/documento.typ
-typst compile --root . modulo-2/ut01/tarea/partes/p01/typst/documento.typ
-typst watch --root . modulo-1/ut01/tarea/typst/documento.typ
+typst compile --root . curso-1/ut01/tarea/typst/documento.typ
+typst compile --root . curso-2/ut01/tarea/partes/p01/typst/documento.typ
+typst watch --root . curso-1/ut01/tarea/typst/documento.typ
 ```
 
 - `typst compile documento.typ` ejecutado dentro de `typst/` (como afirma la cabecera de los archivos) FALLA: los imports relativos a `.typst/lib.typ` se salen del project root.
@@ -145,16 +145,16 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 
   ```bash
   bash "$FP_KIT/typst/revisar.sh"                                    # todo el entregable
-  bash "$FP_KIT/typst/revisar.sh" modulo-1/ut01/tarea/typst/capitulos/01-ejemplo.typ   # solo un fichero
+  bash "$FP_KIT/typst/revisar.sh" curso-1/ut01/tarea/typst/capitulos/01-ejemplo.typ   # solo un fichero
   ```
 
   - `FP_KIT` es la ruta absoluta al kit y la exporta el plugin del kit en los shells que abre opencode (agente y terminal integrada). Si ejecutas el script fuera de opencode, usa la ruta del kit en su lugar.
-  - El comando `/revisar <modulo> [capítulo]` lanza esta revisión sobre un módulo entero o sobre un capítulo suelto.
+  - El comando `/revisar <curso> [capítulo]` lanza esta revisión sobre un curso entero o sobre un capítulo suelto.
   - Alcance: los proyectos Typst de las entregas (`ut*/tarea/typst/` y, en tareas por partes, `ut*/tarea/partes/p*/typst/`); nunca la carpeta raíz `.typst/`.
   - Las revisiones se hacen contra dos fuentes: el enunciado (`1-descripcion.pdf` o `descripcion.pdf` de `ut*/tarea/`, o el de la parte en `ut*/tarea/partes/p*/`) y la documentación de la unidad (`ut*/documentacion/*.txt`): la entrega tiene que estar en base a ambas, no solo al enunciado.
   - El script quita el marcado y el código Typst antes de revisar (comentarios, bloques de código, líneas de código como `let`/`for`/`if`, llamadas a funciones, argumentos con nombre y código en línea) y deja la prosa: párrafos, encabezados, celdas de tabla y pies. De los `.bib` solo conserva el valor de cada campo, no los nombres. Así que no hace falta meter en el diccionario ni palabras de sintaxis de Typst ni nombres de campo de las entradas `.bib`.
-  - El diccionario de palabras admitidas son dos listas que el script une: la del kit (`$FP_KIT/typst/.aspell.es.pwl`, solo palabras de la sintaxis de Typst que el script no quita, iguales para cualquier proyecto) y la del proyecto (`.typst/.aspell.es.pwl`, con el vocabulario propio de estos módulos; puede no existir). Formato de ambas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script las convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
-  - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista que toque en el mismo cambio: a la del kit solo si es de la sintaxis de Typst, y al del proyecto lo propio de estos módulos (lo habitual). Cuanto menos ruido, más se ve una falta real.
+  - El diccionario de palabras admitidas son dos listas que el script une: la del kit (`$FP_KIT/typst/.aspell.es.pwl`, solo palabras de la sintaxis de Typst que el script no quita, iguales para cualquier proyecto) y la del proyecto (`.typst/.aspell.es.pwl`, con el vocabulario propio de estos cursos; puede no existir). Formato de ambas: UTF-8, una palabra por línea, sin cabecera y con acentos (`clúster`, `indentación`, `Usabilidad`…). El script las convierte a latin-1 porque aspell la lee en ese encoding; si una palabra no existe en latin-1, aborta y la señala.
+  - Al revisar texto, si sale una palabra que está bien escrita y va a seguir apareciendo (tecnicismo, nombre propio, sigla, campo de una API), añádela a la lista que toque en el mismo cambio: a la del kit solo si es de la sintaxis de Typst, y al del proyecto lo propio de estos cursos (lo habitual). Cuanto menos ruido, más se ve una falta real.
   - No se meten a propósito: las palabras españolas escritas sin la tilde (`version`, `maximo`…), para que si aparecen en prosa salten como falta real; y los nombres y el relleno de las entradas de plantilla del `referencias.bib` (Smith, Jones, Nakamura, `placeholder`…), que se quedan a la vista hasta que esas entradas se sustituyan.
 
 ## Escritura en el kit
@@ -172,7 +172,7 @@ No hagas commits ni prepares el índice (`git add`, `git commit`, `git stash`…
 El kit y los proyectos están en mejora continua: cuando una petición deje un convenio nuevo, escríbelo en el mismo cambio, en el sitio que le toque, y no lo vuelvas a preguntar después. Dónde va según su alcance:
 
 - Genérico (vale para cualquier ciclo): al kit (una sección de este AGENTS.md, un comando de `comandos/`, el `README.md`…). Antes de tocar el kit, avisa y espera el visto bueno.
-- Propio del proyecto de entregas (módulos, centro, material de apoyo…): al `AGENTS.md` de ese proyecto, que se actualiza directamente.
+- Propio del proyecto de entregas (cursos, centro, material de apoyo…): al `AGENTS.md` de ese proyecto, que se actualiza directamente.
 
 Lo que el usuario pida expresamente para el kit se hace sin preguntar (ver «Escritura en el kit»); la regla de arriba es para los convenios que deduzcas tú.
 

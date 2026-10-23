@@ -4,11 +4,11 @@ Convenios propios de estas entregas, además de los genéricos del kit (`opencod
 
 ## Ciclo
 
-*<Nombre del ciclo>*. Un directorio por módulo, con su código:
+*<Nombre del ciclo>*. Un directorio por curso, con su código:
 
-- `<modulo-1>`: <Asignatura>.
+- `<curso-1>`: <Curso>.
 
-En los ejemplos se siguen usando nombres genéricos (`modulo-1`, `ut01`), no estos.
+En los ejemplos se siguen usando nombres genéricos (`curso-1`, `ut01`), no estos.
 
 ## Estructura
 

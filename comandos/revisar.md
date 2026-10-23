@@ -1,21 +1,21 @@
 ---
-description: Revisa el entregable de un módulo (todos los capítulos o uno concreto) según los convenios de redacción.
+description: Revisa el entregable de un curso (todos los capítulos o uno concreto) según los convenios de redacción.
 ---
 
-Revisa el entregable de un módulo siguiendo los convenios de redacción de `AGENTS.md`.
+Revisa el entregable de un curso siguiendo los convenios de redacción de `AGENTS.md`.
 
-Argumentos: `<modulo>`, `<ut>` y, solo si es un capítulo suelto, su número. Recibido: $ARGUMENTS
-Si falta el módulo, pídelo.
+Argumentos: `<curso>`, `<ut>` y, solo si es un capítulo suelto, su número. Recibido: $ARGUMENTS
+Si falta el curso, pídelo.
 
-Localiza los ficheros del entregable: los `capitulos/*.typ` y el `referencias.bib` del módulo.
+Localiza los ficheros del entregable: los `capitulos/*.typ` y el `referencias.bib` del curso.
 
-- Sin número: todos los capítulos del módulo.
-- Con número: solo el capítulo cuyo nombre empieza por ese número a dos dígitos (`3` → `03-*.typ`). Si el módulo está dividido en partes y sale más de uno, pregunta cuál revisar.
+- Sin número: todos los capítulos del curso.
+- Con número: solo el capítulo cuyo nombre empieza por ese número a dos dígitos (`3` → `03-*.typ`). Si el curso está dividido en partes y sale más de uno, pregunta cuál revisar.
 
 Luego:
 
 1. Pasa el corrector ortográfico: `bash {{KIT}}/typst/revisar.sh <ficheros>`.
-   - Si sale una palabra bien escrita que va a repetirse (tecnicismo, nombre propio, sigla), añádela al diccionario que corresponda: si vale para cualquier proyecto, al genérico del kit; si es propia de este módulo, a `.typst/.aspell.es.pwl` del proyecto.
+   - Si sale una palabra bien escrita que va a repetirse (tecnicismo, nombre propio, sigla), añádela al diccionario que corresponda: si vale para cualquier proyecto, al genérico del kit; si es propia de este curso, a `.typst/.aspell.es.pwl` del proyecto.
    - Las palabras españolas sin tilde (`version`, `maximo`) no se añaden: son faltas reales.
 2. Revisa el texto contra los convenios de `AGENTS.md` y contra el enunciado (`1-descripcion.pdf` o `descripcion.pdf`) y la documentación de la unidad (`documentacion/*.txt`): tics, voz, densidad, repeticiones y frases forzadas. Propón los cambios concretos.
    - No borres código comentado de los `.typ` por tu cuenta: si propones quitarlo, pregunta antes. Si el comentario lleva `NO ELIMINAR`, `NO BORRAR`, `MANTENER` o similar, no lo toques.
