@@ -7,6 +7,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 ## Qué contiene
 
 - `AGENTS.md`: convenios de redacción y estructura. Se cargan como instrucciones del proyecto.
+- [`COMANDOS.md`](COMANDOS.md): guía breve de todos los comandos, en el orden normal de uso.
 - `comandos/*.md`: comandos de opencode: `/iniciar-ciclo`, `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice`, `/crear-referencia`, `/documentar-unidad`, `/revisar-unidad`, `/revisar-capitulo`, `/guardar-sesion` y `/cargar-sesion`.
 - `plugin.ts`: plugin de opencode que registra esos comandos y exporta la variable `FP_KIT` (ruta absoluta del kit) a los shells. El LSP de Typst (`tinymist`) se resuelve en el editor (o con `tinymist` a mano) y el permiso `external_directory` se declara en el `opencode.json` del proyecto.
 - `index.ts`: reexporta `plugin.ts` como exportación por defecto, que es la entrada que carga opencode.

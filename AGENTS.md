@@ -181,4 +181,4 @@ Lo que el usuario pida expresamente para el kit se hace sin preguntar (ver «Esc
 
 ## Mantenimiento de este archivo
 
-Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `.typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `comandos/` o el `plugin.ts`/`index.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
+Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `.typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `comandos/` o el `plugin.ts`/`index.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio. Si el cambio toca los comandos, actualiza también `COMANDOS.md`.
