@@ -13,7 +13,7 @@ function directorioDelKit(): string {
 
 async function leerComandos(kit: string): Promise<Record<string, Comando>> {
   const comandos: Record<string, Comando> = {}
-  const directorio = join(kit, "commands")
+  const directorio = join(kit, "comandos")
 
   let ficheros: string[]
   try {

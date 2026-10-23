@@ -22,7 +22,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 ## Cambios estructurales
 
-- Cuando se pida renombrar o mover un directorio o un fichero, revisar y actualizar las referencias en los `README.md`, los `.typ` (excepto `lib.typ`), los `.sh`, los `.ts` y los `commands/`. No dar el cambio por terminado hasta comprobar que no queda ninguna referencia a la ruta antigua.
+- Cuando se pida renombrar o mover un directorio o un fichero, revisar y actualizar las referencias en los `README.md`, los `.typ` (excepto `lib.typ`), los `.sh`, los `.ts` y los `comandos/`. No dar el cambio por terminado hasta comprobar que no queda ninguna referencia a la ruta antigua.
 
 ## Compilar Typst
 
@@ -171,11 +171,11 @@ No hagas commits ni prepares el índice (`git add`, `git commit`, `git stash`…
 
 El kit y los proyectos están en mejora continua: cuando una petición deje un convenio nuevo, escríbelo en el mismo cambio, en el sitio que le toque, y no lo vuelvas a preguntar después. Dónde va según su alcance:
 
-- Genérico (vale para cualquier ciclo): al kit (una sección de este AGENTS.md, un comando de `commands/`, el `README.md`…). Antes de tocar el kit, avisa y espera el visto bueno.
+- Genérico (vale para cualquier ciclo): al kit (una sección de este AGENTS.md, un comando de `comandos/`, el `README.md`…). Antes de tocar el kit, avisa y espera el visto bueno.
 - Propio del proyecto de entregas (módulos, centro, material de apoyo…): al `AGENTS.md` de ese proyecto, que se actualiza directamente.
 
 Lo que el usuario pida expresamente para el kit se hace sin preguntar (ver «Escritura en el kit»); la regla de arriba es para los convenios que deduzcas tú.
 
 ## Mantenimiento de este archivo
 
-Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `.typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `commands/` o el `plugin.ts`/`index.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
+Si un cambio en el kit o en la estructura de los repos de entregas afecta a lo aquí descrito (la plantilla `.typst/lib.typ`, el script y los diccionarios del kit, la estructura de las unidades `ut*/`, los comandos de compilación, los comandos de `comandos/` o el `plugin.ts`/`index.ts` del kit, o las convenciones de redacción), actualiza este AGENTS.md en el mismo cambio.
