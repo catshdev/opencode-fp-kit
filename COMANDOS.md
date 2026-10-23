@@ -1,6 +1,6 @@
 # Comandos
 
-Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la estructura, documentar, escribir, revisar y guardar la sesión. Todos los comandos se lanzan desde la raíz del proyecto y en los ejemplos se usan nombres genéricos (`curso-1`, `ut01`).
+Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la estructura, documentar, escribir, revisar y gestionar la sesión. Todos los comandos se lanzan desde la raíz del proyecto y en los ejemplos se usan nombres genéricos (`curso-1`, `ut01`).
 
 ## 1. Preparar el proyecto
 
@@ -56,7 +56,7 @@ Revisa todos los capítulos de la unidad y su bibliografía. No acepta un capít
 
 Revisa un solo capítulo. El capítulo puede ser un número (`3` → `03-*.typ`) o el nombre del fichero.
 
-## 6. Guardar la sesión
+## 6. Sesión
 
 ### `/guardar-sesion`
 
@@ -65,3 +65,7 @@ Guarda la sesión actual en `.opencode/sesion.json`, sobrescribiendo el backup a
 ### `/cargar-sesion`
 
 Importa la sesión guardada en `.opencode/sesion.json`. Si no existe, avisa y no importa nada.
+
+### `/crear-alias-fish`
+
+Crea el alias de fish `opencode-fp` para abrir el proyecto actual en la sesión actual. Si ya existía, borra su fichero de funciones y lo vuelve a generar con `funcsave`. Necesita `fish` instalado.

@@ -8,7 +8,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 
 - `AGENTS.md`: convenios de redacción y estructura. Se cargan como instrucciones del proyecto.
 - [`COMANDOS.md`](COMANDOS.md): guía breve de todos los comandos, en el orden normal de uso.
-- `comandos/*.md`: comandos de opencode: `/iniciar-ciclo`, `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice`, `/crear-referencia`, `/documentar-unidad`, `/revisar-unidad`, `/revisar-capitulo`, `/guardar-sesion` y `/cargar-sesion`.
+- `comandos/*.md`: comandos de opencode: `/iniciar-ciclo`, `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice`, `/crear-referencia`, `/documentar-unidad`, `/revisar-unidad`, `/revisar-capitulo`, `/guardar-sesion`, `/cargar-sesion` y `/crear-alias-fish`.
 - `plugin.ts`: plugin de opencode que registra esos comandos y exporta la variable `FP_KIT` (ruta absoluta del kit) a los shells. El LSP de Typst (`tinymist`) se resuelve en el editor (o con `tinymist` a mano) y el permiso `external_directory` se declara en el `opencode.json` del proyecto.
 - `index.ts`: reexporta `plugin.ts` como exportación por defecto, que es la entrada que carga opencode.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
@@ -18,7 +18,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 
 ## Herramientas del sistema
 
-Para que el kit funcione en NixOS, el sistema tiene que tener instalado:
+Para que el kit funcione en NixOS, el sistema tiene que tener instalado lo siguiente. `fish` solo hace falta para `/crear-alias-fish`:
 
 | Herramienta | Para qué | En NixOS |
 |---|---|---|
@@ -29,6 +29,7 @@ Para que el kit funcione en NixOS, el sistema tiene que tener instalado:
 | `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
 | `git` | `revisar.sh` localiza el repositorio y los ficheros versionados. | `git`. |
 | `bash`, `coreutils`, `grep`, `sed`, `awk`, `iconv` | Scripts, revisión y creación de capítulos, apéndices y referencias. | `bash`, `coreutils`, `gnugrep`, `gnused`, `gawk` y `glibc`. |
+| `fish` | Crear el alias de `/crear-alias-fish`. Es opcional si no usas ese comando. | `fish`. |
 
 `tinymist` es opcional: solo hace falta para tener diagnósticos de Typst en el editor; el plugin no lo usa.
 
@@ -40,9 +41,10 @@ Para comprobar que no falta ninguno:
 for c in opencode typst pdftotext aspell jq git bash iconv; do
   command -v "$c" >/dev/null 2>&1 || echo "Falta: $c"
 done
+command -v fish >/dev/null 2>&1 || echo "Falta (opcional, solo para /crear-alias-fish): fish"
 ```
 
-`/iniciar-ciclo` valida estas herramientas antes de pedir datos o copiar nada; si falta algo, no continúa.
+`/iniciar-ciclo` valida las herramientas obligatorias antes de pedir datos o copiar nada; si falta algo, no continúa. `fish` no entra en esa validación porque solo hace falta para `/crear-alias-fish`.
 
 
 ## Cómo engancharlo en un proyecto
@@ -92,4 +94,5 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
 - `/guardar-sesion` guarda la sesión actual en `.opencode/sesion.json` y sobrescribe el backup anterior; `/cargar-sesion` la importa desde ese mismo fichero.
+- `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto).
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.
