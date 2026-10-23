@@ -28,14 +28,17 @@ cp -R "$src"/. "<curso>/<ut>/"
 Duplica `tarea/partes/p01` para cada parte adicional:
 
 ```bash
+n=<número>
 base="<curso>/<ut>/tarea/partes/p01"
-for ((i=2; i<=<número>; i++)); do
+for ((i=2; i<=n; i++)); do
   printf -v parte '%02d' "$i"
   cp -R "$base" "<curso>/<ut>/tarea/partes/p$parte"
 done
 ```
 
-Ajusta el subtítulo de `parte.typ` en todas: `TAREA 1\ PARTE 1`, `TAREA 1\ PARTE 2`, etc. Las carpetas van a dos dígitos (`p02`) y el subtítulo usa el número de parte (`PARTE 2`).
+Ajusta el subtítulo de `parte.typ` en todas, usando el subtítulo base y el número de parte: `TAREA 1\ PARTE 1`, `TAREA 1\ PARTE 2`, etc. Las carpetas van a dos dígitos (`p02`) y el subtítulo usa el número de parte (`PARTE 2`).
+
+Cada parte es un proyecto Typst completo en `tarea/partes/pNN/typst/` (con `documento.typ`, `parte.typ`, `capitulos/`, `figuras/` y `referencias.bib`); no hay un `documento.typ` común.
 
 Los datos comunes de la tarea van en `<curso>/<ut>/tarea/.typst/tarea.typ` (no en `tarea/typst/`): rellena `titulo`, `dia`, `mes` y `anyo`. No pongas ahí `subtitulo`; el de cada parte vive en su `partes/pNN/typst/parte.typ`.
 
