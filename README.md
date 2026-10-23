@@ -15,6 +15,34 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `typst/ejemplos.typ`: ejemplos de tablas de la plantilla (incluido `flex-caption`).
 - `typst/plantillas/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore` y el `AGENTS.md`), `curso/` (los datos del curso, en `curso.typ`) y `unidad-trabajo/` (una unidad con su proyecto Typst).
 
+## Herramientas del sistema
+
+Para que el kit funcione, el sistema tiene que tener instalado:
+
+| Herramienta | Para qué | Paquete |
+|---|---|---|
+| `opencode` V2 | Ejecutar el agente, cargar el plugin y los comandos. | Instalador oficial de opencode. |
+| `typst` 0.15.1 | Compilar los entregables. | `typst` (si el de la distro es más antiguo, usa el binario oficial). |
+| `pdftotext` | Pasar los PDF de documentación a `.txt` en `/documentar`, `/crear-curso` y `/crear-unidad`. | `poppler-utils` en Debian/Ubuntu y NixOS; `poppler` en Arch. |
+| `aspell` + diccionario español | Revisión ortográfica de `/revisar`. | `aspell` y `aspell-es` (Debian/Ubuntu/Arch); `aspell` y `aspellDicts.es` en NixOS. |
+| `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
+| `git` | `revisar.sh` localiza el repositorio y los ficheros versionados. | `git`. |
+| `bash`, `coreutils`, `grep`, `sed`, `iconv` | Scripts y revisión. | `bash` 4+, `coreutils`, GNU `grep` (usa `-P`), `sed` y `glibc`/`libiconv`. |
+
+`tinymist` es opcional: solo hace falta para tener diagnósticos de Typst en el editor; el plugin no lo usa.
+
+El plugin se carga dentro de opencode, así que no hace falta instalar Node ni Bun aparte. La primera vez que se compile un documento con `cetz`, `fletcher` o `meander`, Typst descarga esos paquetes de `@preview` y los cachea; sin red, tienen que estar ya cacheados.
+
+Para comprobar que no falta ninguno:
+
+```bash
+for c in opencode typst pdftotext aspell jq git bash iconv; do
+  command -v "$c" >/dev/null 2>&1 || echo "Falta: $c"
+done
+```
+
+Probado con opencode 2.0.32, typst 0.15.1, aspell 0.60.8.2 y jq 1.8.2.
+
 ## Cómo engancharlo en un proyecto
 
 Crea el `opencode.json` del proyecto (en la raíz o dentro de `.opencode/`) con la ruta al kit en `plugins` y el `AGENTS.md` del kit en `instructions`:
