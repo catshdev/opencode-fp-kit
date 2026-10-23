@@ -10,15 +10,15 @@
 
 // ---- Capitulos del cuerpo principal (numeración arábiga) ----
 #let capitulos = [
-  #include "chapters/01-introduction.typ"
-  #include "chapters/02-methodology.typ"
-  #include "chapters/03-results.typ"
-  #include "chapters/04-discussion.typ"
+  #include "capitulos/01-introduction.typ"
+  #include "capitulos/02-methodology.typ"
+  #include "capitulos/03-results.typ"
+  #include "capitulos/04-discussion.typ"
 ]
 
 // ---- Apendices (opcional) ----
 #let apendices = none /* [
-  #include "chapters/a-appendix.typ"
+  #include "capitulos/a-appendix.typ"
 ]*/
 
 // Lista de Abreviaciones (opcional): pares (corto, largo).
