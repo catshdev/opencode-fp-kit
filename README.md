@@ -17,21 +17,21 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 
 ## Herramientas del sistema
 
-Para que el kit funcione, el sistema tiene que tener instalado:
+Para que el kit funcione en NixOS, el sistema tiene que tener instalado:
 
-| Herramienta | Para qué | Paquete |
+| Herramienta | Para qué | En NixOS |
 |---|---|---|
-| `opencode` V2 | Ejecutar el agente, cargar el plugin y los comandos. | Instalador oficial de opencode. |
-| `typst` 0.15.1 | Compilar los entregables. | `typst` (si el de la distro es más antiguo, usa el binario oficial). |
-| `pdftotext` | Pasar los PDF de documentación a `.txt` en `/documentar`, `/crear-curso` y `/crear-unidad`. | `poppler-utils` en Debian/Ubuntu y NixOS; `poppler` en Arch. |
-| `aspell` + diccionario español | Revisión ortográfica de `/revisar`. | `aspell` y `aspell-es` (Debian/Ubuntu/Arch); `aspell` y `aspellDicts.es` en NixOS. |
+| `opencode` V2 | Ejecutar el agente, cargar el plugin y los comandos. | Instalador oficial de opencode. El paquete de nixpkgs puede seguir en V1 y no sirve para este plugin. |
+| `typst` 0.15.1 | Compilar los entregables. | `typst` (si la versión de nixpkgs es anterior, usa el binario oficial). |
+| `pdftotext` | Pasar los PDF de documentación a `.txt` en `/documentar`, `/crear-curso` y `/crear-unidad`. | `poppler-utils`. |
+| `aspell` + diccionario español | Revisión ortográfica de `/revisar`. | `aspellWithDicts [ aspellDicts.es ]`. |
 | `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
 | `git` | `revisar.sh` localiza el repositorio y los ficheros versionados. | `git`. |
-| `bash`, `coreutils`, `grep`, `sed`, `iconv` | Scripts y revisión. | `bash` 4+, `coreutils`, GNU `grep` (usa `-P`), `sed` y `glibc`/`libiconv`. |
+| `bash`, `coreutils`, `grep`, `sed`, `iconv` | Scripts y revisión. | `bash`, `coreutils`, `gnugrep`, `gnused` y `glibc`. |
 
 `tinymist` es opcional: solo hace falta para tener diagnósticos de Typst en el editor; el plugin no lo usa.
 
-El plugin se carga dentro de opencode, así que no hace falta instalar Node ni Bun aparte. La primera vez que se compile un documento con `cetz`, `fletcher` o `meander`, Typst descarga esos paquetes de `@preview` y los cachea; sin red, tienen que estar ya cacheados.
+El kit no necesita Node, Bun ni `npm install`: `plugin.ts` se carga directamente dentro de opencode y no hay `package.json` ni dependencias que instalar. La primera vez que se compile un documento con `cetz`, `fletcher` o `meander`, Typst descarga esos paquetes de `@preview` y los cachea; sin red, tienen que estar ya cacheados.
 
 Para comprobar que no falta ninguno:
 
