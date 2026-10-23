@@ -134,6 +134,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
   - Si una idea ya se explicó en otro capítulo, no repetirla: nombrarla y seguir.
   - Antes de aplicar un recorte grande, proponerlo con el ahorro de palabras estimado y esperar confirmación.
 - Las capturas de varios requisitos pueden ir condensadas en una sola imagen si se ve todo lo que pide el enunciado; no hace falta una captura por punto. Al revisar, no pedir capturas nuevas si el contenido está condensado y se ve completo.
+- En una revisión no se borra código comentado de los `.typ` por iniciativa propia: se pregunta antes. Si el comentario lleva `NO ELIMINAR`, `NO BORRAR`, `MANTENER` o algo parecido, no se toca.
 - Nada de apartados "Conclusiones"; si hay conclusiones, intégralas ampliando el inicio.
 - Autochequeo antes de dar una entrega por buena: ¿hay algún párrafo que empiece como el anterior? ¿alguna lista con las mismas etiquetas de siempre? ¿algún tic de la lista de arriba? ¿alguna frase que no se entienda a la primera o a la que le falte un verbo? ¿algo que solo podría haber escrito quien no ha mirado el caso de cerca?
 - Después de redactar o modificar texto, pásalo por el revisor ortográfico y dale además una lectura rápida: la herramienta no detecta frases forzadas de más.

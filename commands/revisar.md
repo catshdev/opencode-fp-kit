@@ -18,4 +18,5 @@ Luego:
    - Si sale una palabra bien escrita que va a repetirse (tecnicismo, nombre propio, sigla), añádela al diccionario que corresponda: si vale para cualquier proyecto, al genérico del kit; si es propia de este módulo, a `.typst/.aspell.es.pwl` del proyecto.
    - Las palabras españolas sin tilde (`version`, `maximo`) no se añaden: son faltas reales.
 2. Revisa el texto contra los convenios de `AGENTS.md` y contra el enunciado (`1-descripcion.pdf` o `descripcion.pdf`) y la documentación de la unidad (`documentacion/*.txt`): tics, voz, densidad, repeticiones y frases forzadas. Propón los cambios concretos.
+   - No borres código comentado de los `.typ` por tu cuenta: si propones quitarlo, pregunta antes. Si el comentario lleva `NO ELIMINAR`, `NO BORRAR`, `MANTENER` o similar, no lo toques.
 3. Si un recorte es grande, propónlo con el ahorro estimado y espera confirmación antes de aplicarlo.
