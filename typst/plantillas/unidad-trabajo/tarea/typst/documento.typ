@@ -8,7 +8,7 @@
   // Comun
   logo: base.logo,
   centro: base.centro,
-  programa: base.curso,
+  programa: base.ciclo,
   autor: base.autor,
   autora: base.autora,
   ubicacion: base.ubicacion,
