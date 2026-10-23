@@ -10,7 +10,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 - Cada módulo tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
   - `ut01/documentacion/`: documentación de la unidad en `.txt`, sacada de los PDF con `pdftotext`. Las tareas se hacen en base a ella. Puede estar vacía.
   - `ut01/tarea/`: los enunciados en PDF (`0-info.pdf`, `1-descripcion.pdf` (o `descripcion.pdf`), `2-informacion.pdf`, `3-evaluacion.pdf`, …).
-  - `ut01/tarea/typst/`: la entrega escrita (`main.typ`, `data.typ`, `chapters/NN-nombre.typ`, `references.bib`, `figures/`). El contenido de los capítulos se saca de `1-descripcion.pdf` (o `descripcion.pdf` si va sin número).
+  - `ut01/tarea/typst/`: la entrega escrita (`main.typ`, `data.typ`, `chapters/NN-nombre.typ`, `references.bib`, `figuras/`). El contenido de los capítulos se saca de `1-descripcion.pdf` (o `descripcion.pdf` si va sin número).
 - Una tarea de una unidad puede estar dividida en partes: la documentación de la unidad va en `ut01/documentacion/`, los datos de la tarea en `ut01/tarea/typst/data.typ` y cada parte en `ut01/tarea/partes/p01`, `p02`, …, con su propio `1-descripcion.pdf` (o `descripcion.pdf`) y su proyecto `typst/` completo. Los `main.typ` de las partes importan los datos en cadena: `../../../../../../.typst/lib.typ` y `../../../../../../.typst/data.typ` (raíz, 6 niveles), `../../../../../.typst/data.typ` (asignatura, 5), `../../../.typst/data.typ` (tarea, 4) y `data.typ` (la propia parte).
 - En las tareas de documento único los imports son más cortos: `../../../../.typst/lib.typ` (plantilla) y `../../../../.typst/data.typ` (raíz) con 4 niveles, `../../../.typst/data.typ` (asignatura) con 3 y `data.typ` en la carpeta del proyecto.
 - Las plantillas viven en el kit, en `typst/templates/`: `inicio/` es el arranque del proyecto (los ficheros de `.typst/`, más el `.gitignore` y el `AGENTS.md` del proyecto) y lo copia `/iniciar-fp`; `modulo/` trae `.typst/data.typ` con los datos de la asignatura; y `unidad-trabajo/` trae una unidad (`documentacion/` y `tarea/`, con el proyecto Typst en `tarea/typst/`). Las copian `/crear-modulo` (que crea el módulo y, a continuación, su primera unidad `ut01`) y `/crear-unidad`. No compilan en su sitio actual (dentro del kit).
@@ -19,6 +19,10 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 - El script de revisión ortográfica vive en el kit (`typst/revisar.sh`, junto a este AGENTS.md), con un diccionario que solo lleva palabras de la sintaxis de Typst; los dos están fuera del repo de entregas. En `.typst/` del proyecto queda el diccionario con el vocabulario propio de estos módulos.
 - Registrar cada capítulo nuevo en el `#include` de su `main.typ`.
 - Los apéndices no van como un capítulo: se definen en el `data.typ` del proyecto (`#let apendices = [ #include "chapters/a-appendix.typ" ]`, o `none` si no hay) y `main.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes).
+
+## Cambios estructurales
+
+- Cuando se pida renombrar o mover un directorio o un fichero, revisar y actualizar las referencias en los `README.md`, los `.typ` (excepto `lib.typ`), los `.sh`, los `.ts` y los `commands/`. No dar el cambio por terminado hasta comprobar que no queda ninguna referencia a la ruta antigua.
 
 ## Compilar Typst
 
@@ -122,7 +126,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 - Tablas con el patrón `#figure(table(...), caption: [...])` y `table.header`; ejemplos reales en el kit (`$FP_KIT/typst/examples.typ`).
 - Diagramas y gráficos: siempre resueltos con Typst, nunca generes imágenes. Se usan paquetes de `@preview` (`cetz`, `fletcher`, `meander`…), que Typst descarga y cachea al compilar: sin red, esos documentos fallan si no están cacheados.
 - Abreviaciones (tupla `abreviaciones` de `main.typ`): siglas en español tal cual; siglas en inglés con el valor en inglés y la traducción al español en cursiva entre paréntesis, p. ej. `("IA", [Artificial Intelligence (_Inteligencia Artificial_)])`.
-- Figuras del entregable en `typst/figures/`, nombradas `NN-descripcion.png`, y referenciadas desde los capítulos como `../figures/...`.
+- Figuras del entregable en `typst/figuras/`, nombradas `NN-descripcion.png`, y referenciadas desde los capítulos como `../figuras/...`.
 
 ### Revisión y brevedad
 

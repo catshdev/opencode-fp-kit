@@ -19,7 +19,7 @@ para que el número siga siendo correcto si reordenas las cosas: el diseño
 general se resume en @fig:method-overview.
 
 #figure(
-  image("../figures/placeholder.svg", width: 80%),
+  image("../figuras/placeholder.svg", width: 80%),
   caption: flex-caption(
     [Un esquema general del método. Esta es la leyenda larga que aparece debajo
      de la figura; debería explicar lo que muestra la figura con suficiente
@@ -55,8 +55,8 @@ número y una leyenda (@fig:two-panel).
   grid(
     columns: 2,
     column-gutter: 6pt,
-    image("../figures/placeholder.svg", width: 100%),
-    image("../figures/placeholder.svg", width: 100%),
+    image("../figuras/placeholder.svg", width: 100%),
+    image("../figuras/placeholder.svg", width: 100%),
   ),
   caption: flex-caption(
     [Una figura de dos paneles. *(A)* El primer panel. *(B)* El segundo panel.

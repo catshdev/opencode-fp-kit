@@ -14,7 +14,7 @@ refiérete a ella directamente (@fig:results-overview) y deja que la leyenda
 aporte la información que el lector necesita para leerla.
 
 #figure(
-  image("../figures/placeholder.svg", width: 85%),
+  image("../figuras/placeholder.svg", width: 85%),
   caption: flex-caption(
     [El resultado principal. Reemplaza este ejemplo por el gráfico que mejor
      transmita tu hallazgo principal, y limita la leyenda al contexto que el

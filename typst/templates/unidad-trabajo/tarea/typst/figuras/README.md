@@ -1,11 +1,11 @@
-# figures/
+# figuras/
 
 Coloca aquí las figuras de tu tesis (gráficos, diagramas, capturas de pantalla) y
 referéncialas desde un capítulo con una ruta relativa:
 
 ```typ
 #figure(
-  image("../figures/your-figure.png", width: 100%),
+  image("../figuras/your-figure.png", width: 100%),
   caption: [Tu leyenda.],
 ) <fig:your-figure>
 ```
