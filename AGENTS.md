@@ -4,7 +4,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 ## Estructura
 
-- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo o un apéndice, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo` y `/crear-apendice`.
+- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo, un apéndice o una referencia, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice` y `/crear-referencia`.
 - Nunca uses los nombres reales de esos cursos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, …
 - Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
 - Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
@@ -116,7 +116,8 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 
 ### Citas y referencias
 
-- Citas: `bibliography(..., style: "apa")` y referencias `@online` con `author = {{Nombre}}` (doble llave si no es persona), `title`, `year`, `url`, `urldate`; se citan con `@clave`. Varios `referencias.bib` aún tienen entradas de plantilla sin sustituir.
+- Citas: `bibliography(..., style: "apa")` y referencias `@online` con `author = {{Nombre}}` (llaves dobles cuando se pase author, para que aparezca el nombre completo), `title`, `year`, `url`, `urldate`; se citan con `@clave`. Varios `referencias.bib` aún tienen entradas de plantilla sin sustituir.
+- El comando `/crear-referencia` añade entradas a `referencias.bib`; en las `@online` rellena `urldate` con la fecha de entrega de `tarea.typ`.
 - La cita (`@clave`) va pegada a la frase que respalda, dentro de un enunciado con sentido completo. No la cuelgues del final de un gerundio o de un añadido forzado solo para cuadrar la frase: si al quitar la cita queda rara, reescríbela.
 - No metas una cita en cada párrafo como adorno; cita lo que de verdad respalde una afirmación concreta.
 
