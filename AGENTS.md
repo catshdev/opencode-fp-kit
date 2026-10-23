@@ -149,7 +149,8 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
   ```
 
   - `FP_KIT` es la ruta absoluta al kit y la exporta el plugin del kit en los shells que abre opencode (agente y terminal integrada). Si ejecutas el script fuera de opencode, usa la ruta del kit en su lugar.
-  - El comando `/revisar-unidad <curso> [capítulo]` lanza esta revisión sobre un curso entero o sobre un capítulo suelto.
+  - El comando `/revisar-unidad <curso> <ut>` revisa todos los capítulos de la unidad.
+  - El comando `/revisar-capitulo <curso> <ut> <capítulo>` revisa solo el capítulo indicado.
   - Alcance: los proyectos Typst de las entregas (`ut*/tarea/typst/` y, en tareas por partes, `ut*/tarea/partes/p*/typst/`); nunca la carpeta raíz `.typst/`.
   - Las revisiones se hacen contra dos fuentes: el enunciado (`1-descripcion.pdf` o `descripcion.pdf` de `ut*/tarea/`, o el de la parte en `ut*/tarea/partes/p*/`) y la documentación de la unidad (`ut*/documentacion/*.txt`): la entrega tiene que estar en base a ambas, no solo al enunciado.
   - El script quita el marcado y el código Typst antes de revisar (comentarios, bloques de código, líneas de código como `let`/`for`/`if`, llamadas a funciones, argumentos con nombre y código en línea) y deja la prosa: párrafos, encabezados, celdas de tabla y pies. De los `.bib` solo conserva el valor de cada campo, no los nombres. Así que no hace falta meter en el diccionario ni palabras de sintaxis de Typst ni nombres de campo de las entradas `.bib`.
