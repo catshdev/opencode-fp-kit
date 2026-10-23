@@ -94,5 +94,5 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
 - `/guardar-sesion` guarda la sesión actual en `.opencode/sesion.json` y sobrescribe el backup anterior; `/cargar-sesion` la importa desde ese mismo fichero.
-- `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto).
+- `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto). `/iniciar-ciclo` lo lanza al terminar si el alias no existe y `fish` está instalado.
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.

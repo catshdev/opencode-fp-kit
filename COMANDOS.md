@@ -6,7 +6,7 @@ Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la 
 
 ### `/iniciar-ciclo`
 
-Se ejecuta una vez por proyecto. Comprueba que estén las herramientas necesarias, copia la plantilla `inicio` a `.typst/` y crea el `.gitignore` y el `AGENTS.md` del proyecto. Pide los datos que falten.
+Se ejecuta una vez por proyecto. Comprueba que estén las herramientas obligatorias, copia la plantilla `inicio` a `.typst/` y crea el `.gitignore` y el `AGENTS.md` del proyecto. Pide los datos que falten. Al terminar, si `fish` está instalado y no existe el alias `opencode-fp`, lo crea con `/crear-alias-fish`; si no puede, avisa y sigue, porque el alias es opcional.
 
 ## 2. Crear la estructura
 
