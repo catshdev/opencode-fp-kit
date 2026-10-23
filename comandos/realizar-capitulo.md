@@ -5,7 +5,7 @@ description: Crea y redacta un capítulo nuevo, o revisa el que ya existe.
 Realiza un capítulo de una unidad: si no existe, lo crea y lo redacta entero desde cero; si ya existe, lo revisa.
 
 Argumentos: `<curso>`, `<ut>`, `<número>` y `<nombre>`. Recibido: $ARGUMENTS
-Si falta el curso, la unidad o el número, pídelos. El número tiene que ser entero (`3` se convierte en `03`). El nombre solo hace falta si el capítulo no existe; si ya existe, usa el del fichero y no lo renombres.
+Si falta el curso, la unidad o el número, pídelos. El número tiene que ser entero (`3` se convierte en `03`). El nombre solo hace falta si el capítulo no existe; si falta y hay que crearlo, pídelo. Si ya existe, usa el del fichero y no lo renombres.
 
 Comprueba que existe `<curso>/<ut>`. Si no existe, para y avisa.
 
