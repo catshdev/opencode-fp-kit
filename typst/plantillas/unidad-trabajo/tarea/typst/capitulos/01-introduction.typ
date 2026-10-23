@@ -20,7 +20,7 @@ limpia; siguen siendo clicables en el PDF. Una cita individual se ve así
 Usa encabezados de nivel dos para las secciones principales dentro de un
 capítulo, y encabezados de nivel tres para las subsecciones debajo de ellas.
 Cada encabezado se numera automáticamente (puedes desactivar la numeración con
-`heading-numbering: false` en `main.typ`) y aparece en la tabla de contenidos.
+`heading-numbering: false` en `documento.typ`) y aparece en la tabla de contenidos.
 
 Los párrafos del cuerpo están justificados con una altura de línea cómoda. El
 énfasis viene en dos formas: *negrita* para énfasis fuerte y _cursiva_ para

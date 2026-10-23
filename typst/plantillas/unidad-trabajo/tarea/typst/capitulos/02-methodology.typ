@@ -1,7 +1,7 @@
 // `flex-caption` da a una figura una leyenda larga (mostrada debajo de ella) y
 // un título corto (mostrado en el Índice de Figuras / Tablas). Impórtalo en
 // cada capítulo que tenga figuras — los capítulos se `#include`n y no heredan
-// los imports de main.typ.
+// los imports de documento.typ.
 #import "@preview/classic-uni-thesis:0.1.0": flex-caption
 
 = Metodología
@@ -32,7 +32,7 @@ general se resume en @fig:method-overview.
 == Procedimiento
 
 Expón los pasos de tu método en orden. Los comandos cortos y los identificadores
-se pueden escribir en línea, como ejecutar `typst compile main.typ`, mientras que
+se pueden escribir en línea, como ejecutar `typst compile documento.typ`, mientras que
 los listados más largos van en un bloque de código delimitado, que la plantilla
 renderiza sobre un fondo sombreado:
 
