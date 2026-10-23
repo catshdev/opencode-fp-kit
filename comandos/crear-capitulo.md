@@ -59,7 +59,7 @@ printf '= %s\n\n' "$nombre" > "$fichero"
 
 grep -q '^#let capitulos = \[' "$datos" || { echo "No encuentro la lista de capítulos en $datos"; exit 1; }
 inc="  #include \"capitulos/$num-$san.typ\""
-if grep -Fqx "$inc" "$datos"; then
+if grep -Fq "capitulos/$num-$san.typ" "$datos"; then
   echo "El capítulo ya está incluido"
 else
   if awk -v inc="$inc" '
