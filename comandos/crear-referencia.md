@@ -27,9 +27,17 @@ Lee los ejemplos de `{{KIT}}/typst/plantillas/unidad/tarea/typst/referencias.bib
 
 Si el usuario pide otro tipo, usa el tipo BibLaTeX que corresponda.
 
-Pregunta por el nombre de la referencia: será el `title`. Genera una clave de cita única a partir del nombre (o del primer autor y el año, si los tienes): pásala a ASCII, minúsculas y guiones; si queda vacía, usa `referencia`. Si ya existe esa clave en el `.bib`, pide otra. Si el usuario te da una clave, respétala.
+Pregunta por el nombre de la referencia: será el `title`. Sanea ese mismo nombre para la clave de cita: pásalo a ASCII, minúsculas y cambia espacios y signos por guiones; quita los guiones sobrantes y, si queda vacío, usa `referencia`. El nombre original se queda como título; la clave es el nombre saneado. Si el usuario te da otra clave, pásala por el mismo saneado. Si la clave ya existe en el `.bib`, pide otra o añade un sufijo.
 
-Después pregunta si quiere rellenar los campos ahora o dejarlos para luego manualmente. Todos los campos son opcionales; el nombre/título es lo único que no puede faltar. Si quiere rellenarlos ahora, pide solo los que correspondan al tipo:
+Puedes usar este bloque para generar la clave:
+
+```bash
+nombre="<nombre>"
+clave=$(printf '%s' "$nombre" | iconv -f UTF-8 -t ASCII//TRANSLIT | sed -E 's/[^A-Za-z0-9]+/-/g; s/^-+//; s/-+$//; s/.*/\L&/')
+[ -n "$clave" ] || clave="referencia"
+```
+
+Después pregunta si quiere rellenar los campos ahora o dejarlos para luego manualmente. Todos los campos son opcionales de rellenar, pero la entrada se crea completa: el nombre/título siempre va y lo que no rellenes se pone con valores de ejemplo o aleatorios. Si quiere rellenarlos ahora, pide solo los que correspondan al tipo:
 
 - `@online`: `author`, `year`, `url`.
 - `@article`: `author`, `journal`, `year`, `volume`, `number`, `pages`, `doi`.
@@ -38,7 +46,7 @@ Después pregunta si quiere rellenar los campos ahora o dejarlos para luego manu
 - `@inproceedings`: `author`, `booktitle`, `year`, `pages`.
 - `@misc`: `author`, `year`, `howpublished` (si es una URL, `\url{...}`), `note`.
 
-Si el usuario deja campos para luego, omítelos; no pongas valores inventados ni campos vacíos.
+Si deja campos para luego, no los omitas: ponlos todos con valores de ejemplo o aleatorios (por ejemplo, `Autor de ejemplo`, `Revista de ejemplo`, `2026`, `1--10`, `https://example.com/`). Si elige rellenarlos ahora pero salta alguno, haz lo mismo. Luego se cambian a mano.
 
 Si hay `author`, escríbelo con llaves dobles para que aparezca el nombre completo:
 
@@ -46,9 +54,9 @@ Si hay `author`, escríbelo con llaves dobles para que aparezca el nombre comple
   author = {{Nombre completo}},
 ```
 
-Esto vale para cualquier tipo de referencia. Si no hay `author`, no pongas esa línea.
+Esto vale para cualquier tipo de referencia. Si no hay `author`, usa `{{Autor de ejemplo}}` para que la entrada quede completa.
 
-Para `@online`, rellena siempre `urldate` con la fecha de entrega del `tarea.typ`: lee `dia`, `mes` y `anyo` y escribe `AAAA-MM-DD`, con el día y el mes a dos cifras. Si no encuentras las tres variables o no son válidas, pide la fecha; no la inventes. Si no hay `url`, avisa de que falta, aunque dejes el resto para después.
+Para `@online`, rellena siempre `urldate` con la fecha de entrega del `tarea.typ`: lee `dia`, `mes` y `anyo` y escribe `AAAA-MM-DD`, con el día y el mes a dos cifras. Si no encuentras las tres variables o no son válidas, pide la fecha; no la inventes. Si no hay `url`, pon `https://example.com/` y avisa de que es un valor de ejemplo.
 
 Puedes usar este bloque como guía para sacar la fecha:
 
@@ -75,4 +83,4 @@ Añade la entrada al final del `.bib` con una línea en blanco de separación. P
 }
 ```
 
-Si falta `author`, `year` o `url`, quita esas líneas. Añade solo la entrada nueva: no reescribas el `.bib` entero, no dupliques la clave ni la entrada y no modifiques las que ya haya.
+No quites líneas de campos: si falta un valor, pon el de ejemplo. Añade solo la entrada nueva: no reescribas el `.bib` entero, no dupliques la clave ni la entrada y no modifiques las que ya haya.
