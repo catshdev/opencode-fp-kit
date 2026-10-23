@@ -8,10 +8,10 @@ Nombre del módulo (si falta, pídelo): $ARGUMENTS
 
 Antes de crear nada, pide al usuario los datos mínimos que falten y espera su respuesta; no los inventes:
 
-- Asignatura, para `<modulo>/.typst/data.typ`: `nombre` (el de la asignatura) y el del profesor o la profesora (`profesor` o `profesora`; el que no se use queda en `none`).
+- Asignatura, para `<modulo>/.typst/asignatura.typ`: `nombre` (el de la asignatura) y el del profesor o la profesora (`profesor` o `profesora`; el que no se use queda en `none`).
 - Primera tarea (`ut01`), para `<modulo>/ut01/tarea/typst/tarea.typ`: `titulo`, `subtitulo` (por ejemplo «TAREA 1»), `dia`, `mes` y `anyo`.
 
-Crea el módulo copiando `{{KIT}}/typst/plantillas/modulo` al directorio `<modulo>` y rellena su `.typst/data.typ`.
+Crea el módulo copiando `{{KIT}}/typst/plantillas/modulo` al directorio `<modulo>` y rellena su `.typst/asignatura.typ`.
 
 Después crea la primera unidad de trabajo (`ut01`) con los mismos pasos que el comando `/crear-unidad`: copia `{{KIT}}/typst/plantillas/unidad-trabajo` a `<modulo>/ut01`, añade la documentación en `.txt` (con `pdftotext`) y rellena `<modulo>/ut01/tarea/typst/tarea.typ`.
 
