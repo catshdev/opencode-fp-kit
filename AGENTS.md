@@ -133,6 +133,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
   - Cubrir la rúbrica no es desarrollarla de más: si un apartado se queda en describir la norma o la teoría en general, sin bajarla al caso concreto, o repite lo que ya se dijo, se recorta o se funde con otro. Una entrega que cumple los puntos no gana por rellenarlos.
   - Si una idea ya se explicó en otro capítulo, no repetirla: nombrarla y seguir.
   - Antes de aplicar un recorte grande, proponerlo con el ahorro de palabras estimado y esperar confirmación.
+- Las capturas de varios requisitos pueden ir condensadas en una sola imagen si se ve todo lo que pide el enunciado; no hace falta una captura por punto. Al revisar, no pedir capturas nuevas si el contenido está condensado y se ve completo.
 - Nada de apartados "Conclusiones"; si hay conclusiones, intégralas ampliando el inicio.
 - Autochequeo antes de dar una entrega por buena: ¿hay algún párrafo que empiece como el anterior? ¿alguna lista con las mismas etiquetas de siempre? ¿algún tic de la lista de arriba? ¿alguna frase que no se entienda a la primera o a la que le falte un verbo? ¿algo que solo podría haber escrito quien no ha mirado el caso de cerca?
 - Después de redactar o modificar texto, pásalo por el revisor ortográfico y dale además una lectura rápida: la herramienta no detecta frases forzadas de más.
