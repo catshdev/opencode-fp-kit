@@ -12,9 +12,9 @@ El capítulo puede ser un número (`3` → `03-*.typ`) o el nombre del fichero, 
 - `<curso>/<ut>/tarea/typst/capitulos/`, si es una tarea de documento único.
 - `<curso>/<ut>/tarea/partes/p*/typst/capitulos/`, si la unidad está dividida en partes.
 
-Si no encuentras el capítulo, pide el nombre exacto. Si hay más de un fichero que coincide (por ejemplo, el mismo número en varias partes), pregunta de qué parte es y no revises nada hasta saberlo.
+Si no encuentras el capítulo, pide el nombre exacto. Si hay más de un fichero que coincide (por ejemplo, el mismo número en varias partes), pregunta cuál es y no revises nada hasta saberlo.
 
-Pasa al corrector solo ese capítulo y el `referencias.bib` de su proyecto Typst. No incluyas los demás capítulos.
+Trabaja solo con ese capítulo y el `referencias.bib` de su proyecto Typst. No incluyas los demás capítulos.
 
 Luego:
 

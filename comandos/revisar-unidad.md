@@ -5,7 +5,7 @@ description: Revisa una unidad completa (todos sus capítulos) según los conven
 Revisa todos los capítulos de una unidad siguiendo los convenios de redacción de `AGENTS.md`.
 
 Argumentos: `<curso>` y `<ut>`. Recibido: $ARGUMENTS
-Si falta el curso o la unidad, pídelos. Si llega un tercer argumento (un capítulo), avisa de que este comando revisa la unidad entera y de que para un capítulo se usa `/revisar-capitulo`.
+Si falta el curso o la unidad, pídelos. Si llega un tercer argumento (un capítulo), no revises solo ese capítulo: avisa de que este comando revisa la unidad entera y de que para un capítulo se usa `/revisar-capitulo`, y sigue con la unidad completa.
 
 Localiza todos los `capitulos/*.typ` de la unidad:
 
