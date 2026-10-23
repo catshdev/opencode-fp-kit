@@ -30,6 +30,7 @@ Crea el `opencode.json` del proyecto (en la raíz o dentro de `.opencode/`) con 
   ],
   "permissions": [
     { "action": "external_directory", "resource": "*", "effect": "deny" },
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
     { "action": "external_directory", "resource": "~/path-to/opencode-fp-kit/*", "effect": "ask" }
   ]
 }
@@ -41,6 +42,7 @@ Uso de permisos más permisivos para desarrollar a la vez sobre el kit:
 {
   "permissions": [
     { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
     { "action": "external_directory", "resource": "~/path-to/opencode-fp-kit/*", "effect": "allow" }
   ]
 }
