@@ -27,7 +27,7 @@ Para que el kit funcione en NixOS, el sistema tiene que tener instalado:
 | `aspell` + diccionario español | Revisión ortográfica de `/revisar-unidad` y `/revisar-capitulo`. | `aspellWithDicts [ aspellDicts.es ]`. |
 | `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
 | `git` | `revisar.sh` localiza el repositorio y los ficheros versionados. | `git`. |
-| `bash`, `coreutils`, `grep`, `sed`, `iconv` | Scripts y revisión. | `bash`, `coreutils`, `gnugrep`, `gnused` y `glibc`. |
+| `bash`, `coreutils`, `grep`, `sed`, `awk`, `iconv` | Scripts, revisión y creación de capítulos. | `bash`, `coreutils`, `gnugrep`, `gnused`, `gawk` y `glibc`. |
 
 `tinymist` es opcional: solo hace falta para tener diagnósticos de Typst en el editor; el plugin no lo usa.
 

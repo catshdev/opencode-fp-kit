@@ -62,10 +62,16 @@ inc="  #include \"capitulos/$num-$san.typ\""
 if grep -Fqx "$inc" "$datos"; then
   echo "El capítulo ya está incluido"
 else
-  awk -v inc="$inc" '
+  if awk -v inc="$inc" '
     /#let capitulos = \[/ { en=1 }
     en && /^[[:space:]]*\]/ { print inc; print; en=0; next }
     { print }
-  ' "$datos" > "$datos.tmp" && mv "$datos.tmp" "$datos"
+  ' "$datos" > "$datos.tmp"; then
+    mv "$datos.tmp" "$datos"
+  else
+    rm -f "$datos.tmp"
+    echo "No se pudo añadir el capítulo a $datos"
+    exit 1
+  fi
 fi
 ```
