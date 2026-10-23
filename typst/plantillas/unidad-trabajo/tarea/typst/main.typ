@@ -1,6 +1,6 @@
 #import "../../../../.typst/lib.typ": abbrev-table, flex-caption, thesis
 
-#import "../../../../.typst/data.typ" as base
+#import "../../../../.typst/base.typ" as base
 #import "../../../.typst/asignatura.typ" as asignatura
 #import "tarea.typ" as tarea
 

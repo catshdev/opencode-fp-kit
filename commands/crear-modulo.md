@@ -15,4 +15,4 @@ Crea el módulo copiando `{{KIT}}/typst/plantillas/modulo` al directorio `<modul
 
 Después crea la primera unidad de trabajo (`ut01`) con los mismos pasos que el comando `/crear-unidad`: copia `{{KIT}}/typst/plantillas/unidad-trabajo` a `<modulo>/ut01`, añade la documentación en `.txt` (con `pdftotext`) y rellena `<modulo>/ut01/tarea/typst/tarea.typ`.
 
-Los ficheros de datos se vuelcan en el `thesis.with` de cada `main.typ`; los parámetros de centro, logo, autor, etc. salen del `.typst/data.typ` de la raíz.
+Los ficheros de datos se vuelcan en el `thesis.with` de cada `main.typ`; los parámetros de centro, logo, autor, etc. salen del `.typst/base.typ` de la raíz.
