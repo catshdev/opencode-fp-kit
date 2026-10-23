@@ -1,5 +1,5 @@
 ---
-description: Añade una referencia nueva al referencias.bib de una unidad.
+description: Añade una referencia nueva al archivo referencias.bib de una unidad.
 ---
 
 Añade una referencia nueva a la bibliografía de una unidad.
@@ -36,7 +36,7 @@ Después pregunta si quiere rellenar los campos ahora o dejarlos para luego manu
 - `@book`: `author`, `publisher`, `year`, `address`, `edition`.
 - `@incollection`: `author`, `booktitle`, `editor`, `publisher`, `year`, `pages`.
 - `@inproceedings`: `author`, `booktitle`, `year`, `pages`.
-- `@misc`: `author`, `year`, `howpublished`, `note`.
+- `@misc`: `author`, `year`, `howpublished` (si es una URL, `\url{...}`), `note`.
 
 Si el usuario deja campos para luego, omítelos; no pongas valores inventados ni campos vacíos.
 
@@ -75,4 +75,4 @@ Añade la entrada al final del `.bib` con una línea en blanco de separación. P
 }
 ```
 
-Si falta `author`, `year` o `url`, quita esas líneas. No dupliques la clave ni la entrada.
+Si falta `author`, `year` o `url`, quita esas líneas. Añade solo la entrada nueva: no reescribas el `.bib` entero, no dupliques la clave ni la entrada y no modifiques las que ya haya.

@@ -116,7 +116,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 
 ### Citas y referencias
 
-- Citas: `bibliography(..., style: "apa")` y referencias `@online` con `author = {{Nombre}}` (llaves dobles cuando se pase author, para que aparezca el nombre completo), `title`, `year`, `url`, `urldate`; se citan con `@clave`. Varios `referencias.bib` aún tienen entradas de plantilla sin sustituir.
+- Citas: `bibliography(..., style: "apa")` y referencias `@online` con `author = {{Nombre}}` (llaves dobles cuando se pase `author`, para que aparezca el nombre completo), `title`, `year`, `url`, `urldate`; se citan con `@clave`. Varios `referencias.bib` aún tienen entradas de plantilla sin sustituir.
 - El comando `/crear-referencia` añade entradas a `referencias.bib`; en las `@online` rellena `urldate` con la fecha de entrega de `tarea.typ`.
 - La cita (`@clave`) va pegada a la frase que respalda, dentro de un enunciado con sentido completo. No la cuelgues del final de un gerundio o de un añadido forzado solo para cuadrar la frase: si al quitar la cita queda rara, reescríbela.
 - No metas una cita en cada párrafo como adorno; cita lo que de verdad respalde una afirmación concreta.
