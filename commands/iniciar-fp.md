@@ -17,7 +17,7 @@ Y los módulos para el `AGENTS.md` de la raíz: el código de cada uno y su asig
 Después ejecuta:
 
 ```bash
-src={{KIT}}/typst/templates/inicio
+src={{KIT}}/typst/plantillas/inicio
 mkdir -p .typst
 cp -R "$src"/. .typst/
 mv .typst/.gitignore ./.gitignore

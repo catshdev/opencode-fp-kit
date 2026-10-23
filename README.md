@@ -13,7 +13,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
 - `typst/.aspell.es.pwl`: diccionario del kit, solo con palabras de la sintaxis de Typst. Cada proyecto añade su vocabulario propio en su `.typst/.aspell.es.pwl`.
 - `typst/examples.typ`: ejemplos de tablas de la plantilla (incluido `flex-caption`).
-- `typst/templates/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore` y el `AGENTS.md`), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
+- `typst/plantillas/`: esqueletos que copian los comandos: `inicio/` (el arranque del proyecto: los ficheros de `.typst/` más el `.gitignore` y el `AGENTS.md`), `modulo/` (los `data.typ` de la asignatura) y `unidad-trabajo/` (una unidad con su proyecto Typst).
 
 ## Cómo engancharlo en un proyecto
 
@@ -57,6 +57,6 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 ## Notas
 
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
-- Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/templates/`).
+- Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit es el único directorio externo autorizado por la configuración de ejemplo. Aun así, el agente avisa antes de escribir ahí por iniciativa propia (ver `AGENTS.md`).
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.
