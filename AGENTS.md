@@ -4,7 +4,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 ## Estructura
 
-- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo o un apéndice, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo` y `/crear-apendice`.
+- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo o un apéndice, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo` y `/crear-apendice`.
 - Nunca uses los nombres reales de esos cursos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, …
 - Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
 - Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
@@ -151,6 +151,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
   - `FP_KIT` es la ruta absoluta al kit y la exporta el plugin del kit en los shells que abre opencode (agente y terminal integrada). Si ejecutas el script fuera de opencode, usa la ruta del kit en su lugar.
   - El comando `/revisar-unidad <curso> <ut>` revisa todos los capítulos de la unidad.
   - El comando `/revisar-capitulo <curso> <ut> <capítulo>` revisa solo el capítulo indicado.
+  - El comando `/realizar-capitulo <curso> <ut> <número> [<nombre>]` crea el capítulo si falta y lo redacta entero desde cero; si ya existe, lo revisa con el mismo criterio que `/revisar-capitulo`.
   - Alcance: los proyectos Typst de las entregas (`ut*/tarea/typst/` y, en tareas por partes, `ut*/tarea/partes/p*/typst/`); nunca la carpeta raíz `.typst/`.
   - Las revisiones se hacen contra dos fuentes: el enunciado (`1-descripcion.pdf` o `descripcion.pdf` de `ut*/tarea/`, o el de la parte en `ut*/tarea/partes/p*/`) y la documentación de la unidad (`ut*/documentacion/*.txt`): la entrega tiene que estar en base a ambas, no solo al enunciado.
   - El script quita el marcado y el código Typst antes de revisar (comentarios, bloques de código, líneas de código como `let`/`for`/`if`, llamadas a funciones, argumentos con nombre y código en línea) y deja la prosa: párrafos, encabezados, celdas de tabla y pies. De los `.bib` solo conserva el valor de cada campo, no los nombres. Así que no hace falta meter en el diccionario ni palabras de sintaxis de Typst ni nombres de campo de las entradas `.bib`.
