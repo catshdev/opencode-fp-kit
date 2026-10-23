@@ -35,7 +35,7 @@ typst watch --root . curso-1/ut01/tarea/typst/documento.typ
 ```
 
 - `typst compile documento.typ` ejecutado dentro de `typst/` (como afirma la cabecera de los archivos) FALLA: los imports relativos a `.typst/lib.typ` se salen del project root.
-- Typst 0.15.1 viene en el perfil del sistema; no hay que instalar ni fijar nada más.
+- Typst viene en el perfil del sistema; no hay que instalar ni fijar nada más.
 - Los PDF generados (`documento.pdf`) están en `.gitignore`: se compilan en local y no se commitean. Los únicos PDFs versionados son los enunciados: `ut*/tarea/*.pdf` y, en tareas por partes, `ut*/tarea/partes/p*/*.pdf`.
 
 ### Comprobar el PDF sin abrirlo

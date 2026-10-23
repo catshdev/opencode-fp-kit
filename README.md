@@ -21,8 +21,8 @@ Para que el kit funcione en NixOS, el sistema tiene que tener instalado:
 
 | Herramienta | Para qué | En NixOS |
 |---|---|---|
-| `opencode` V2 | Ejecutar el agente, cargar el plugin y los comandos. | Instalador oficial de opencode. El paquete de nixpkgs puede seguir en V1 y no sirve para este plugin. |
-| `typst` 0.15.1 | Compilar los entregables. | `typst` (si la versión de nixpkgs es anterior, usa el binario oficial). |
+| `opencode` | Ejecutar el agente, cargar el plugin y los comandos. | Instalador oficial de opencode. |
+| `typst` | Compilar los entregables. | `typst`. |
 | `pdftotext` | Pasar los PDF de documentación a `.txt` en `/documentar`, `/crear-curso` y `/crear-unidad`. | `poppler-utils`. |
 | `aspell` + diccionario español | Revisión ortográfica de `/revisar`. | `aspellWithDicts [ aspellDicts.es ]`. |
 | `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
@@ -41,7 +41,8 @@ for c in opencode typst pdftotext aspell jq git bash iconv; do
 done
 ```
 
-Probado con opencode 2.0.32, typst 0.15.1, aspell 0.60.8.2 y jq 1.8.2.
+`/iniciar-fp` valida estas herramientas antes de pedir datos o copiar nada; si falta algo, no continúa.
+
 
 ## Cómo engancharlo en un proyecto
 

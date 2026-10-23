@@ -4,6 +4,30 @@ description: Inicia las entregas de un proyecto copiando la plantilla 'inicio' d
 
 Prepara el proyecto con la plantilla `inicio` del kit: los ficheros del proyecto Typst van a `.typst/`, y el `.gitignore` y el `AGENTS.md` a la raíz.
 
+Antes de pedir datos o copiar nada, valida que el sistema tiene todo lo necesario. Ejecuta esto y, si falla, no continúes: muestra qué falta y espera a que esté instalado.
+
+```bash
+set -uo pipefail
+faltan=()
+for c in opencode typst pdftotext aspell jq git bash cp mkdir mv mktemp cat sort rm basename dirname grep sed iconv; do
+  command -v "$c" >/dev/null 2>&1 || faltan+=("$c")
+done
+if [ "${#faltan[@]}" -ne 0 ]; then
+  printf 'Faltan herramientas: %s\n' "${faltan[*]}"
+  exit 1
+fi
+
+if ! aspell dicts 2>/dev/null | grep -qx es; then
+  echo "Falta el diccionario español de aspell"
+  exit 1
+fi
+
+if ! printf 'a\n' | grep -qP 'a'; then
+  echo "grep no soporta -P"
+  exit 1
+fi
+```
+
 Antes de copiar nada, pide al usuario los datos mínimos que falten y espera su respuesta; no los inventes. Son los de `.typst/base.typ`:
 
 - `logo`: el fichero de imagen (dentro de `.typst/logo/`) y su ancho en porcentaje.
