@@ -4,7 +4,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 
 ## Estructura
 
-- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo o un capítulo, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada` y `/crear-capitulo`.
+- Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo o un apéndice, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo` y `/crear-apendice`.
 - Nunca uses los nombres reales de esos cursos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, …
 - Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
 - Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
@@ -18,7 +18,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 - `.typst/base.typ` son los datos raíz compartidos (logo, centro, ciclo, autor…); cada curso guarda sus datos en `.typst/curso.typ`.
 - El script de revisión ortográfica vive en el kit (`typst/revisar.sh`, junto a este AGENTS.md), con un diccionario que solo lleva palabras de la sintaxis de Typst; los dos están fuera del repo de entregas. En `.typst/` del proyecto queda el diccionario con el vocabulario propio de estos cursos.
 - Registrar cada capítulo nuevo en el `#include` de su `tarea.typ` (documento único) o de su `parte.typ` (tarea en partes).
-- Los apéndices no van como un capítulo: se definen en el fichero `tarea.typ` del proyecto (`#let apendices = [ #include "capitulos/a-appendix.typ" ]`, o `none` si no hay) y `documento.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes).
+- Los apéndices no van como un capítulo: se definen en el fichero `tarea.typ` (documento único) o `parte.typ` (tarea en partes) (`#let apendices = [ #include "capitulos/a-appendix.typ" ]`, o `none` si no hay) y `documento.typ` los referencia con `apendices: tarea.apendices` (documento único) o `apendices: parte.apendices` (tarea en partes). Los crea `/crear-apendice` en `capitulos/` y los registra en `apendices` de `tarea.typ` o `parte.typ`.
 
 ## Cambios estructurales
 
