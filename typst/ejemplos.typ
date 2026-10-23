@@ -1,4 +1,4 @@
-= Table examples
+= Ejemplos de tablas
 
 #figure(
   table(
@@ -14,6 +14,7 @@
   caption: [Hadoop Streaming Job - Application Info],
 )
 
+#import "../../../../../.typst/lib.typ": flex-caption
 #figure(
   table(
     columns: (auto, 1fr, 2fr),

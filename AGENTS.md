@@ -123,7 +123,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 ### Formato Typst
 
 - El texto generado se entrega como bloque de código Typst (cabeceras, negrita, cursiva, listas). La numeración es automática: no números las cabeceras a mano.
-- Tablas con el patrón `#figure(table(...), caption: [...])` y `table.header`; ejemplos reales en el kit (`$FP_KIT/typst/examples.typ`).
+- Tablas con el patrón `#figure(table(...), caption: [...])` y `table.header`; ejemplos reales en el kit (`$FP_KIT/typst/ejemplos.typ`).
 - Diagramas y gráficos: siempre resueltos con Typst, nunca generes imágenes. Se usan paquetes de `@preview` (`cetz`, `fletcher`, `meander`…), que Typst descarga y cachea al compilar: sin red, esos documentos fallan si no están cacheados.
 - Abreviaciones (tupla `abreviaciones` de `main.typ`): siglas en español tal cual; siglas en inglés con el valor en inglés y la traducción al español en cursiva entre paréntesis, p. ej. `("IA", [Artificial Intelligence (_Inteligencia Artificial_)])`.
 - Figuras del entregable en `typst/figuras/`, nombradas `NN-descripcion.png`, y referenciadas desde los capítulos como `../figuras/...`.
