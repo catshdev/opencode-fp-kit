@@ -7,7 +7,7 @@ Revisa el entregable de un módulo siguiendo los convenios de redacción de `AGE
 Argumentos: `<modulo>`, `<ut>` y, solo si es un capítulo suelto, su número. Recibido: $ARGUMENTS
 Si falta el módulo, pídelo.
 
-Localiza los ficheros del entregable: los `capitulos/*.typ` y el `references.bib` del módulo.
+Localiza los ficheros del entregable: los `capitulos/*.typ` y el `referencias.bib` del módulo.
 
 - Sin número: todos los capítulos del módulo.
 - Con número: solo el capítulo cuyo nombre empieza por ese número a dos dígitos (`3` → `03-*.typ`). Si el módulo está dividido en partes y sale más de uno, pregunta cuál revisar.

@@ -6,7 +6,7 @@
 #let anyo = 2026
 
 // ---- Bibliografia (opcional) ----
-#let bibliografia = bibliography("references.bib", style: "apa") // none
+#let bibliografia = bibliography("referencias.bib", style: "apa") // none
 
 // ---- Capitulos del cuerpo principal (numeración arábiga) ----
 #let capitulos = [
