@@ -7,7 +7,7 @@ El kit puede estar en cualquier sitio: el plugin se localiza solo por su propia 
 ## Qué contiene
 
 - `AGENTS.md`: convenios de redacción y estructura. Se cargan como instrucciones del proyecto.
-- `comandos/*.md`: comandos de opencode: `/iniciar-fp`, `/crear-curso`, `/crear-unidad`, `/documentar` y `/revisar`.
+- `comandos/*.md`: comandos de opencode: `/iniciar-fp`, `/crear-curso`, `/crear-unidad`, `/documentar`, `/revisar`, `/guardar-sesion` y `/cargar-sesion`.
 - `plugin.ts`: plugin de opencode que registra esos comandos y exporta la variable `FP_KIT` (ruta absoluta del kit) a los shells. El LSP de Typst (`tinymist`) se resuelve en el editor (o con `tinymist` a mano) y el permiso `external_directory` se declara en el `opencode.json` del proyecto.
 - `index.ts`: reexporta `plugin.ts` como exportación por defecto, que es la entrada que carga opencode.
 - `typst/revisar.sh`: script de revisión ortográfica del entregable.
@@ -61,4 +61,5 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
+- `/guardar-sesion` guarda la sesión actual en `.opencode/sesion.json` y sobrescribe el backup anterior; `/cargar-sesion` la importa desde ese mismo fichero.
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.
