@@ -5,7 +5,7 @@
 #import "tarea.typ" as tarea
 
 #show: thesis.with(
-  // Comun
+  // Base
   logo: base.logo,
   centro: base.centro,
   programa: base.ciclo,
