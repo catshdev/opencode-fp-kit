@@ -2,7 +2,7 @@
 
 #import "../../../../.typst/data.typ" as base
 #import "../../../.typst/data.typ" as asignatura
-#import "data.typ" as tarea
+#import "tarea.typ" as tarea
 
 #show: thesis.with(
   // Comun
