@@ -26,7 +26,8 @@ Para que el kit funcione en NixOS, el sistema tiene que tener instalado lo sigui
 | `typst` | Compilar los entregables. | `typst`. |
 | `pdftotext` | Pasar los PDF de documentación a `.txt` en `/documentar-unidad`, `/crear-curso`, `/crear-unidad` y `/crear-unidad-particionada`. | `poppler-utils`. |
 | `aspell` + diccionario español | Revisión ortográfica de `/revisar-unidad`, `/revisar-capitulo` y `/realizar-capitulo`. | `aspellWithDicts [ aspellDicts.es ]`. |
-| `jq` | Leer el ID de `.opencode/sesion.json` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
+| `jq` | Leer el ID de `.opencode/sesion.json.gz` en `/guardar-sesion` y `/cargar-sesion`. | `jq`. |
+| `gzip` | Comprimir y descomprimir el backup de sesión en `/guardar-sesion` y `/cargar-sesion`. | `gzip`. |
 | `git` | `revisar.sh` localiza el repositorio y los ficheros versionados. | `git`. |
 | `bash`, `coreutils`, `grep`, `sed`, `awk`, `iconv` | Scripts, revisión y creación de capítulos, apéndices y referencias. | `bash`, `coreutils`, `gnugrep`, `gnused`, `gawk` y `glibc`. |
 | `fish` | Crear el alias de `/crear-alias-fish`. Es opcional si no usas ese comando. | `fish`. |
@@ -38,7 +39,7 @@ El kit no necesita Node, Bun ni `npm install`: `plugin.ts` se carga directamente
 Para comprobar que no falta ninguno:
 
 ```bash
-for c in opencode typst pdftotext aspell jq git bash iconv; do
+for c in opencode typst pdftotext aspell jq gzip git bash iconv; do
   command -v "$c" >/dev/null 2>&1 || echo "Falta: $c"
 done
 command -v fish >/dev/null 2>&1 || echo "Falta (opcional, solo para /crear-alias-fish): fish"
@@ -93,6 +94,6 @@ Los comandos y el plugin se cargan al arrancar el servicio en segundo plano. Sal
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
-- `/guardar-sesion` guarda la sesión actual en `.opencode/sesion.json` y sobrescribe el backup anterior; `/cargar-sesion` la importa desde ese mismo fichero.
+- `/guardar-sesion` guarda la sesión actual comprimida en `.opencode/sesion.json.gz`, sobrescribe el backup anterior y borra el `.json` antiguo. `/cargar-sesion` la descomprime en un temporal y la importa; `opencode session import` no acepta `.gz` directamente.
 - `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. El alias recarga la configuración antes de abrir, así que los comandos nuevos están disponibles al volver a entrar. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto). Si ya lo tenías creado, vuelve a lanzar `/crear-alias-fish` para actualizarlo. `/iniciar-ciclo` lo lanza al terminar si el alias no existe y `fish` está instalado.
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.

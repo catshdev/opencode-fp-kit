@@ -88,13 +88,13 @@ Revisa un solo capítulo. El capítulo puede ser un número (`3` → `03-*.typ`)
 
 Plantilla: ninguna.
 
-Guarda la sesión actual en `.opencode/sesion.json`, sobrescribiendo el backup anterior. No guarda historial.
+Guarda la sesión actual comprimida en `.opencode/sesion.json.gz`, sobrescribiendo el backup anterior y sin dejar el `.json` antiguo. No guarda historial.
 
 ### `/cargar-sesion`
 
 Plantilla: ninguna.
 
-Importa la sesión guardada en `.opencode/sesion.json`. Si no existe, avisa y no importa nada.
+Importa la sesión guardada en `.opencode/sesion.json.gz`; la descomprime en un temporal y la importa. Si aún existe un `.opencode/sesion.json` antiguo, también lo acepta. Si no hay ninguno, avisa y no importa nada.
 
 ### `/crear-alias-fish`
 

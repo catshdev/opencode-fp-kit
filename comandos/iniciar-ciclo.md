@@ -9,7 +9,7 @@ Antes de pedir datos o copiar nada, valida que el sistema tiene todo lo necesari
 ```bash
 set -uo pipefail
 faltan=()
-for c in opencode typst pdftotext aspell jq git bash cp mkdir mv mktemp cat sort rm basename dirname grep sed awk iconv; do
+for c in opencode typst pdftotext aspell jq gzip git bash cp mkdir mv mktemp cat sort rm basename dirname grep sed awk iconv; do
   command -v "$c" >/dev/null 2>&1 || faltan+=("$c")
 done
 if [ "${#faltan[@]}" -ne 0 ]; then
