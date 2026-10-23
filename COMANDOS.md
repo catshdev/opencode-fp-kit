@@ -4,6 +4,8 @@ Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la 
 
 En cada comando se indica la plantilla que se copia o se toma como referencia; si no usa ninguna, se dice.
 
+Los comandos se cargan al arrancar el servicio de opencode. Si cambias un fichero de `comandos/`, ejecuta `opencode reload`; cerrar y abrir la TUI no recarga el servicio.
+
 ## 1. Preparar el proyecto
 
 ### `/iniciar-ciclo`
@@ -98,4 +100,4 @@ Importa la sesión guardada en `.opencode/sesion.json`. Si no existe, avisa y no
 
 Plantilla: ninguna.
 
-Crea el alias de fish `opencode-fp` para abrir el proyecto actual en la sesión actual. Si ya existía, borra su fichero de funciones y lo vuelve a generar con `funcsave`. Necesita `fish` instalado.
+Crea el alias de fish `opencode-fp` para abrir el proyecto actual en la sesión actual. El alias recarga la configuración antes de abrir, para que los comandos nuevos estén disponibles. Si ya existía, borra su fichero de funciones y lo vuelve a generar con `funcsave`. Necesita `fish` instalado.

@@ -86,7 +86,7 @@ El plugin localiza el kit por su cuenta (por su propia ruta) y registra los coma
 
 Las instrucciones van en `instructions` y el permiso del kit en `permissions`. En el primer ejemplo no se deja entrar en ningún directorio externo y el kit queda en `ask`: la primera vez pregunta y, si autorizas, lo guarda. La variante de abajo es la cómoda para desarrollar sobre el kit: pregunta por cualquier directorio externo y autoriza el kit directamente.
 
-Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin list` (debe aparecer la ruta del kit) y con el log (`~/.local/share/opencode/log/opencode.log`), donde no debe salir `failed to load plugin`.
+Los comandos y el plugin se cargan al arrancar el servicio en segundo plano. Salir y volver a entrar en la TUI no recarga ese servicio, así que los cambios en `comandos/` no aparecen. Después de cambiar un comando, ejecuta `opencode reload`; si tocas `plugin.ts` o `index.ts`, ejecuta `opencode service restart`. Compruébalo con `opencode plugin list` (debe aparecer la ruta del kit) y con el log (`~/.local/share/opencode/log/opencode.log`), donde no debe salir `failed to load plugin`.
 
 ## Notas
 
@@ -94,5 +94,5 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
 - El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
 - `/guardar-sesion` guarda la sesión actual en `.opencode/sesion.json` y sobrescribe el backup anterior; `/cargar-sesion` la importa desde ese mismo fichero.
-- `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto). `/iniciar-ciclo` lo lanza al terminar si el alias no existe y `fish` está instalado.
+- `/crear-alias-fish` crea el alias `opencode-fp` para abrir el proyecto actual en la sesión actual. El alias recarga la configuración antes de abrir, así que los comandos nuevos están disponibles al volver a entrar. Borra el alias anterior y lo guarda con `funcsave` en el directorio de funciones de fish (`~/.config/fish/functions` por defecto). Si ya lo tenías creado, vuelve a lanzar `/crear-alias-fish` para actualizarlo. `/iniciar-ciclo` lo lanza al terminar si el alias no existe y `fish` está instalado.
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.

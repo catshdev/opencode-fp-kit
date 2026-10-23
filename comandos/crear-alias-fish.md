@@ -20,10 +20,10 @@ funcion="$config/functions/opencode-fp.fish"
 rm -f "$funcion"
 mkdir -p "$config/functions"
 
-fish --no-config -c 'set ruta (string escape -- $argv[1]); set sesion (string escape -- $argv[2]); alias opencode-fp "opencode $ruta -s $sesion"; funcsave opencode-fp' -- "$PWD" "$OPENCODE_SESSION_ID"
+fish --no-config -c 'set ruta (string escape -- $argv[1]); set sesion (string escape -- $argv[2]); alias opencode-fp "opencode reload >/dev/null 2>&1; opencode $ruta -s $sesion"; funcsave opencode-fp' -- "$PWD" "$OPENCODE_SESSION_ID"
 
 test -f "$funcion"
 printf 'Alias creado en %s\n' "$funcion"
 ```
 
-Muestra el contenido del fichero. Indica que el alias ya funciona en una fish nueva; si hay una fish abierta, hay que cargar el fichero o abrir otra shell.
+El alias recarga la configuración antes de abrir, así que los comandos nuevos están disponibles al volver a entrar. Muestra el contenido del fichero. Indica que el alias ya funciona en una fish nueva; si hay una fish abierta, hay que cargar el fichero o abrir otra shell.
