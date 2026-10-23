@@ -13,6 +13,6 @@ Antes de crear nada, pide al usuario los datos mínimos que falten y espera su r
 
 Crea el curso copiando `{{KIT}}/typst/plantillas/curso` al directorio `<curso>` y rellena su `.typst/curso.typ`.
 
-Después crea la primera unidad de trabajo (`ut01`) con los mismos pasos que el comando `/crear-unidad`: copia `{{KIT}}/typst/plantillas/unidad-trabajo` a `<curso>/ut01`, añade la documentación en `.txt` (con `pdftotext`) y rellena `<curso>/ut01/tarea/typst/tarea.typ`.
+Después crea la primera unidad de trabajo (`ut01`) con los mismos pasos que el comando `/crear-unidad`: copia `{{KIT}}/typst/plantillas/unidad` a `<curso>/ut01`, añade la documentación en `.txt` (con `pdftotext`) y rellena `<curso>/ut01/tarea/typst/tarea.typ`.
 
 Los ficheros de datos se vuelcan en el `thesis.with` de cada `documento.typ`; los parámetros de centro, logo, autor, etc. salen del `.typst/base.typ` de la raíz.
