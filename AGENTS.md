@@ -159,7 +159,7 @@ Escribe como un alumno real de FP: vocabulario cotidiano, frases normales y nada
 
 ## Escritura en el kit
 
-El proyecto de entregas es lo único escribible de serie. Fuera de él, la configuración del proyecto autoriza solo el kit (`$FP_KIT`) como directorio externo, y aun así no escribas ahí por tu cuenta sin avisar: si el cambio en el kit es idea tuya (mejorar el plugin, un comando, el script…), dilo antes y espera el visto bueno. Si el usuario te ha pedido un cambio en el kit, hazlo sin preguntar. Cualquier otra ruta externa (la carpeta padre, otros repos, `~/.config/opencode`, el binario de opencode…) se pide antes: la configuración no la autoriza y opencode preguntará. Ese permiso se declara en `permissions` del `opencode.json`; el plugin no lo añade desde código.
+El proyecto de entregas es lo único escribible de serie, salvo `/tmp` para temporales. Fuera de él, la configuración del proyecto autoriza el kit (`$FP_KIT`) y `/tmp/*` como directorios externos, y aun así no escribas en el kit por tu cuenta sin avisar: si el cambio en el kit es idea tuya (mejorar el plugin, un comando, el script…), dilo antes y espera el visto bueno. Si el usuario te ha pedido un cambio en el kit, hazlo sin preguntar. Cualquier otra ruta externa (la carpeta padre, otros repos, `~/.config/opencode`, el binario de opencode…) se pide antes: la configuración no la autoriza y opencode preguntará. Ese permiso se declara en `permissions` del `opencode.json`; el plugin no lo añade desde código.
 
 Para llegar al kit usa rutas absolutas o el `workdir`; no hagas `cd` a su carpeta padre, que es una ruta externa y dispara el aviso.
 

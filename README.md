@@ -60,5 +60,5 @@ Reinicia opencode para que tome los cambios y compruébalo con `opencode plugin 
 
 - `FP_KIT` (ruta del kit) está en los shells que abre opencode. Fuera de opencode no existe, así que el script de revisión se lanza con la ruta del kit.
 - Los comandos se ejecutan en la raíz del proyecto, así que sus rutas (`documentacion/`, `1-descripcion.pdf` o `descripcion.pdf`) son relativas al proyecto; la plantilla se copia desde el kit (`typst/plantillas/`).
-- El kit es el único directorio externo autorizado por la configuración de ejemplo. Aun así, el agente avisa antes de escribir ahí por iniciativa propia (ver `AGENTS.md`).
+- El kit y `/tmp/*` son los directorios externos autorizados por la configuración de ejemplo. Aun así, el agente avisa antes de escribir en el kit por iniciativa propia (ver `AGENTS.md`).
 - Para diagnósticos de Typst, usa el LSP de tu editor o ejecuta `tinymist` a mano.
