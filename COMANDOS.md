@@ -88,7 +88,7 @@ Revisa un solo capítulo. El capítulo puede ser un número (`3` → `03-*.typ`)
 
 Plantilla: ninguna.
 
-Genera los PDF de una unidad a partir de su `documento.typ` y los deja en `<curso>/<ut>/entrega/`, creando la carpeta si no existe. Si es de documento único, genera un PDF; si va por partes, genera uno por cada `partes/pNN/typst/documento.typ` en la misma carpeta, con el número de parte en el nombre. Consulta el apartado `Entrega` del `AGENTS.md`; elige el patrón de documento único o por partes y, si hay varios del mismo tipo, pregunta cuál usar por su número. Si falta, lo pide y lo guarda, sin deducirlo de otro curso. El patrón de documento único debe incluir `{numero}` y el de partes, `{numero}` y `{parte}`. No sanea el patrón.
+Genera los PDF de una unidad a partir de su `documento.typ` y los deja en `<curso>/<ut>/entrega/`, creando la carpeta si no existe. Si es de documento único, genera un PDF; si va por partes, genera uno por cada `partes/pNN/typst/documento.typ` en la misma carpeta, con el número de parte en el nombre. Consulta el apartado `Entrega` del `AGENTS.md`; elige el patrón de documento único o por partes y, si hay varios del mismo tipo, pregunta cuál usar por su número. Si falta, lo pide y lo guarda, sin deducirlo de otro curso. El patrón de documento único debe incluir `{unidad}` y el de partes, `{unidad}` y `{parte}`. No sanea el patrón.
 
 ## 7. Sesión
 

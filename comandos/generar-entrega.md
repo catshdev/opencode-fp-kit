@@ -20,15 +20,15 @@ Patrón del nombre:
   ```markdown
   ## Entrega
 
-  Las entregas son los PDF de cada unidad de trabajo. Se guardan en la carpeta `entrega` de la unidad. Los formatos se documentan por curso, numerados, y pueden ser distintos para documento único y para tareas por partes. En los patrones, `{numero}` es el número de la unidad y `{parte}` el de la parte.
+  Las entregas son los PDF de cada unidad de trabajo. Se guardan en la carpeta `entrega` de la unidad. Los formatos se documentan por curso, numerados, y pueden ser distintos para documento único y para tareas por partes. En los patrones, `{unidad}` es el número de la unidad y `{parte}` el de la parte.
   ```
 
 - Dentro del apartado, busca el bloque del curso. Tiene esta forma:
 
   ```markdown
   - `<curso>`:
-    1. Documento único: `apellido1_apellido2_nombre_CURSO_Tarea{numero}`
-    2. Por partes: `apellido1_apellido2_nombre_CURSO_Tarea{numero}_Parte{parte}`
+    1. Documento único: `apellido1_apellido2_nombre_CURSO_Tarea{unidad}`
+    2. Por partes: `apellido1_apellido2_nombre_CURSO_Tarea{unidad}_Parte{parte}`
   ```
 
   Los números son por curso. Cada línea indica el tipo. Puede haber varios patrones del mismo tipo si en otra unidad cambió el formato.
@@ -38,9 +38,9 @@ Patrón del nombre:
   - Por partes: las líneas `Por partes`.
 - Si el bloque del curso no existe, créalo con `- \`<curso>\`:` y el patrón que te dé el usuario en una línea numerada del tipo que toca. Si existe pero no hay ninguno del tipo, pide el patrón y añádelo con el siguiente número, con la etiqueta `Documento único` o `Por partes`.
 - Si hay varios del mismo tipo, muéstralos con su número y pregunta cuál prefiere; no elijas por tu cuenta.
-- El patrón de documento único debe llevar `{numero}`. El de partes debe llevar `{numero}` y `{parte}`. Si no, pide uno válido.
+- El patrón de documento único debe llevar `{unidad}`. El de partes debe llevar `{unidad}` y `{parte}`. Si no, pide uno válido.
 - Si el usuario ha dado `<patrón>`, úsalo tal cual en vez del documentado; también tiene que llevar los marcadores que toquen.
-- Sustituye `{numero}` por la unidad a dos dígitos (`ut01` → `01`) y `{parte}` por la parte a dos dígitos (`p01` → `01`).
+- Sustituye `{unidad}` por la unidad a dos dígitos (`ut01` → `01`) y `{parte}` por la parte a dos dígitos (`p01` → `01`).
 - Si el patrón acaba en `.pdf`, quita la extensión antes de montar la ruta; al final se añade una sola vez.
 
 Crea la carpeta de entrega si no existe:
@@ -63,7 +63,7 @@ ut_num=$(printf '%02d' "$((10#$ut_num))")
 patron="${patron%.pdf}"
 
 if [ -f "$curso/$ut/tarea/typst/documento.typ" ]; then
-  nombre="${patron//\{numero\}/$ut_num}"
+  nombre="${patron//\{unidad\}/$ut_num}"
   typst compile --root . "$curso/$ut/tarea/typst/documento.typ" "$curso/$ut/entrega/$nombre.pdf"
 else
   partes=("$curso/$ut/tarea/partes"/p*/typst/documento.typ)
@@ -76,7 +76,7 @@ else
     parte="${parte##*/}"
     parte_num="${parte#p}"
     parte_num=$(printf '%02d' "$((10#$parte_num))")
-    nombre="${patron//\{numero\}/$ut_num}"
+    nombre="${patron//\{unidad\}/$ut_num}"
     nombre="${nombre//\{parte\}/$parte_num}"
     typst compile --root . "$documento" "$curso/$ut/entrega/$nombre.pdf"
   done
