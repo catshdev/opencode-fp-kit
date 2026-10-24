@@ -13,3 +13,7 @@ En los ejemplos se siguen usando nombres genéricos (`curso-1`, `ut01`), no esto
 ## Estructura
 
 - <Material de apoyo de las tareas y otras particularidades del proyecto.>
+
+## Entrega
+
+Las entregas son los PDF de cada unidad de trabajo. Se guardan en la carpeta `entrega` de la unidad. Los formatos se documentan por curso, numerados, y pueden ser distintos para documento único y para tareas por partes. En los patrones, `{numero}` es el número de la unidad y `{parte}` el de la parte.
