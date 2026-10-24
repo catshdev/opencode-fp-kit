@@ -20,7 +20,7 @@ Se ejecuta una vez por proyecto. Comprueba que estén las herramientas obligator
 
 Plantillas: [`typst/plantillas/curso`](typst/plantillas/curso/) y [`typst/plantillas/unidad`](typst/plantillas/unidad/), esta última para `ut01`.
 
-Crea el curso y su primera unidad (`ut01`) desde las plantillas. Pide el nombre del curso, el del profesor o la profesora y los datos de la primera tarea, incluida la fecha de entrega.
+Crea el curso y su primera unidad (`ut01`) desde las plantillas. Pide la abreviación del curso, la sanea y la confirma antes de usarla como `<curso>`; después pide el nombre completo, el del profesor o la profesora y los datos de la primera tarea, incluida la fecha de entrega. Añade o actualiza el curso en el apartado `Ciclo` del `AGENTS.md` del proyecto.
 
 ### `/crear-unidad <curso> <ut>`
 

@@ -36,7 +36,7 @@ Antes de copiar nada, pide al usuario los datos mínimos que falten y espera su 
 - `autor` o `autora`: el nombre de quien entrega; el que no se use queda en `none`.
 - `ubicacion`: la ubicación del centro.
 
-Y los cursos para el `AGENTS.md` de la raíz: el código y el nombre de cada uno.
+Y los cursos para el `AGENTS.md` de la raíz: la abreviación y el nombre completo de cada uno.
 
 Después ejecuta:
 

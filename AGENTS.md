@@ -5,7 +5,7 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 ## Estructura
 
 - Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo, un apéndice o una referencia, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice` y `/crear-referencia`.
-- Nunca uses los nombres reales de esos cursos para poner ejemplos. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, …
+- Nunca uses nombres reales de cursos, códigos ni datos del proyecto de entregas para poner ejemplos en el kit, sus comandos, plantillas o documentación. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, `ut01`, …
 - Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
 - Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
   - `ut01/documentacion/`: documentación de la unidad en `.txt`, sacada de los PDF con `pdftotext`. Las tareas se hacen en base a ella. Puede estar vacía.
