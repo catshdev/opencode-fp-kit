@@ -36,7 +36,7 @@ typst watch --root . curso-1/ut01/tarea/typst/documento.typ
 
 - `typst compile documento.typ` ejecutado dentro de `typst/` (como afirma la cabecera de los archivos) FALLA: los imports relativos a `.typst/lib.typ` se salen del project root.
 - Typst viene en el perfil del sistema; no hay que instalar ni fijar nada más.
-- Los PDF generados (`documento.pdf`) están en `.gitignore`: se compilan en local y no se commitean. En `ut*/tarea/` están los enunciados y, si se generan, los PDF de entrega de `/generar-documento`; estos últimos llevan el nombre acordado en el `AGENTS.md` del proyecto y no son enunciados.
+- Los PDF generados (`documento.pdf`) están en `.gitignore`: se compilan en local y no se commitean. En `ut*/tarea/` y en `ut*/tarea/partes/p*/` están los enunciados y, si se generan, los PDF de entrega de `/generar-documento`; estos últimos llevan el nombre acordado en el `AGENTS.md` del proyecto y no son enunciados.
 
 ### Comprobar el PDF sin abrirlo
 
