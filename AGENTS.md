@@ -7,10 +7,11 @@ Convenios compartidos del kit (`opencode-fp-kit`) para los repos de entregas de 
 - Un directorio por curso (cada carpeta de primer nivel del repo). Los pasos para crear un curso, una unidad de trabajo, un capítulo, un apéndice o una referencia, en los comandos `/crear-curso`, `/crear-unidad`, `/crear-unidad-particionada`, `/crear-capitulo`, `/realizar-capitulo`, `/crear-apendice` y `/crear-referencia`.
 - Nunca uses nombres reales de cursos, códigos ni datos del proyecto de entregas para poner ejemplos en el kit, sus comandos, plantillas o documentación. En ejemplos, comandos y rutas de muestra se usan nombres genéricos: `curso-1`, `curso-2`, `ut01`, …
 - Los convenios propios de un proyecto de entregas (los cursos reales, el centro, el material de apoyo…) van en el `AGENTS.md` de ese proyecto, no aquí; opencode lo carga junto a este. Dónde va cada regla, en «Autoaprendizaje».
-- Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene tres partes:
+- Cada curso tiene unidades de trabajo (ut): `ut01/`, `ut02/`, …. Cada una tiene estas partes:
   - `ut01/documentacion/`: documentación de la unidad en `.txt`, sacada de los PDF con `pdftotext`. Las tareas se hacen en base a ella. Puede estar vacía.
   - `ut01/tarea/`: los enunciados en PDF (`0-info.pdf`, `1-descripcion.pdf` (o `descripcion.pdf`), `2-informacion.pdf`, `3-evaluacion.pdf`, …).
   - `ut01/tarea/typst/`: la entrega escrita (`documento.typ`, `tarea.typ`, `capitulos/NN-nombre.typ`, `referencias.bib`, `figuras/`). El contenido de los capítulos se saca de `1-descripcion.pdf` (o `descripcion.pdf` si va sin número).
+  - `ut01/entrega/`: los PDF de entrega que genera `/generar-documento`; se crea al generar el primero.
 - Una tarea de una unidad puede estar dividida en partes: la documentación de la unidad va en `ut01/documentacion/`, los datos de la tarea en `ut01/tarea/.typst/tarea.typ` y cada parte en `ut01/tarea/partes/p01`, `p02`, …, con su propio `1-descripcion.pdf` (o `descripcion.pdf`) y su proyecto `typst/` completo. Los `documento.typ` de las partes importan los datos en cadena: `../../../../../../.typst/lib.typ` y `../../../../../../.typst/base.typ` (raíz, 6 niveles), `../../../../../.typst/curso.typ` (curso, 5), `../../../.typst/tarea.typ` (tarea, 4) y `parte.typ` (la propia parte). La crea `/crear-unidad-particionada` desde la plantilla `unidad-particionada`.
 - En las tareas de documento único los imports son más cortos: `../../../../.typst/lib.typ` (plantilla) y `../../../../.typst/base.typ` (raíz) con 4 niveles, `../../../.typst/curso.typ` (curso) con 3 y `tarea.typ` en la carpeta del proyecto.
 - Las plantillas viven en el kit, en `typst/plantillas/`: `inicio/` es el arranque del proyecto (los ficheros de `.typst/`, más el `.gitignore` y el `AGENTS.md` del proyecto) y lo copia `/iniciar-ciclo`; `curso/` trae `.typst/curso.typ` con los datos del curso; `unidad/` trae una unidad de documento único (`documentacion/` y `tarea/`, con el proyecto Typst en `tarea/typst/`); y `unidad-particionada/` trae una unidad con la tarea en partes (`documentacion/`, `tarea/.typst/tarea.typ` y el proyecto Typst de una parte en `tarea/partes/p01/typst/`). Las copian `/crear-curso` (que crea el curso y, a continuación, su primera unidad `ut01`), `/crear-unidad` y `/crear-unidad-particionada`. No compilan en su sitio actual (dentro del kit).
@@ -36,7 +37,7 @@ typst watch --root . curso-1/ut01/tarea/typst/documento.typ
 
 - `typst compile documento.typ` ejecutado dentro de `typst/` (como afirma la cabecera de los archivos) FALLA: los imports relativos a `.typst/lib.typ` se salen del project root.
 - Typst viene en el perfil del sistema; no hay que instalar ni fijar nada más.
-- Los PDF generados (`documento.pdf`) están en `.gitignore`: se compilan en local y no se commitean. En `ut*/tarea/` y en `ut*/tarea/partes/p*/` están los enunciados y, si se generan, los PDF de entrega de `/generar-documento`; estos últimos llevan el nombre acordado en el `AGENTS.md` del proyecto y no son enunciados.
+- Los PDF generados (`documento.pdf`) están en `.gitignore`: se compilan en local y no se commitean. En `ut*/tarea/` y en `ut*/tarea/partes/p*/` están los enunciados; los PDF de entrega de `/generar-documento` van a `ut*/entrega/` y llevan el nombre acordado en el `AGENTS.md` del proyecto.
 
 ### Comprobar el PDF sin abrirlo
 

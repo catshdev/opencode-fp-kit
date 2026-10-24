@@ -84,11 +84,11 @@ Revisa un solo capítulo. El capítulo puede ser un número (`3` → `03-*.typ`)
 
 ## 6. Generar los PDF
 
-### `/generar-documento <curso> <ut> <nombre>`
+### `/generar-documento <curso> <ut> [<nombre>]`
 
 Plantilla: ninguna.
 
-Genera los PDF de una unidad a partir de su `documento.typ`. Si es de documento único, deja `<curso>/<ut>/tarea/<nombre>.pdf`; si va por partes, genera uno por cada `partes/pNN/typst/documento.typ` en `<curso>/<ut>/tarea/partes/pNN/<nombre>.pdf`. Pide el curso, la unidad y el nombre; consulta el formato del nombre en el `AGENTS.md` y, si no está, lo pide y lo guarda en el apartado `Entrega`. No sanea el nombre.
+Genera los PDF de una unidad a partir de su `documento.typ` y los deja en `<curso>/<ut>/entrega/`, creando la carpeta si no existe. Si es de documento único, genera un PDF; si va por partes, genera uno por cada `partes/pNN/typst/documento.typ` en la misma carpeta, con el sufijo `_pNN`. Consulta el formato del curso en el apartado `Entrega` del `AGENTS.md`; si no está, lo pide y lo guarda. No sanea el nombre.
 
 ## 7. Sesión
 
