@@ -1,6 +1,6 @@
 # Comandos
 
-Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la estructura, documentar, escribir, revisar y gestionar la sesión. Todos los comandos se lanzan desde la raíz del proyecto y en los ejemplos se usan nombres genéricos (`curso-1`, `ut01`).
+Esta guía sigue el orden normal de una entrega: preparar el proyecto, crear la estructura, documentar, escribir, revisar, generar el PDF y gestionar la sesión. Todos los comandos se lanzan desde la raíz del proyecto y en los ejemplos se usan nombres genéricos (`curso-1`, `ut01`).
 
 En cada comando se indica la plantilla que se copia o se toma como referencia; si no usa ninguna, se dice.
 
@@ -82,7 +82,15 @@ Plantilla: ninguna; usa [`typst/revisar.sh`](typst/revisar.sh).
 
 Revisa un solo capítulo. El capítulo puede ser un número (`3` → `03-*.typ`) o el nombre del fichero.
 
-## 6. Sesión
+## 6. Generar el PDF
+
+### `/generar-documento <curso> <ut> <nombre>`
+
+Plantilla: ninguna.
+
+Genera el PDF de `<curso>/<ut>/tarea/typst/documento.typ` en `<curso>/<ut>/tarea/<nombre>.pdf`. Pide el curso, la unidad y el nombre; consulta el formato del nombre en el `AGENTS.md` y, si no está, lo pide y lo guarda en el apartado `Entrega`. No sanea el nombre. Solo sirve para unidades de documento único.
+
+## 7. Sesión
 
 ### `/guardar-sesion`
 
