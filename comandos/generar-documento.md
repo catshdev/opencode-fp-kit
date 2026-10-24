@@ -16,7 +16,8 @@ Antes de compilar, mira qué estructura tiene la unidad:
 Formato del nombre:
 
 - Busca en el `AGENTS.md` del proyecto el apartado `## Entrega` y la línea del curso, con el formato `- \`<curso>\`: \`<formato>\``.
-- Si no existe la línea del curso, pide el formato al usuario y añádelo a la lista del apartado `## Entrega`; si no existe el apartado, créalo al final con esta presentación y la lista:
+- No deduzcas el formato de un curso a partir del de otro: cada curso puede tener su propio patrón. Si falta el del curso, pídelo.
+- Si no existe la línea del curso, añade el formato que te dé el usuario a la lista del apartado `## Entrega`; si no existe el apartado, créalo al final con esta presentación y la lista:
 
   ```markdown
   ## Entrega
